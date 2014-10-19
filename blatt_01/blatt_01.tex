@@ -136,45 +136,57 @@
         
     \item TODO
     \item Begründen Sie die Korrektheit der Lösung. \\
-    	$L(A') \subseteq M_n$ \\
-    	Sei $w \in M_n$ ein Wort, das vom Automaten $A'$ akzeptiert werden soll.
-        So muss $w$ die gespiegelte Form eines Wortes sein, welches vom
-        Automaten $A$ akzeptiert wird.
-        Im Startzustand $\{p_3\}$ können zunächst beliebig viele $e$s gelesen
-        werden.
-        Damit $A'$ in den Folgezustand $\{p_3,p_2\}$ wechseln kann, muss ein $f$
-        gelesen werden.
-        Sobald sich der Automat $A'$ in diesem Zustand ist, können beliebig
-        viele $f$ gelesen werden.
-        Beim Lesen eines $e$ wechselt $A'$ in den Zustand $\{p_3,p_2,p_1\}$.
-        In diesem Zustand kann durch das Lesen eines $f$ in den vorherigen
-        Zustand wechseln, oder durch das Lesen eines weiteren $e$ in den
-        Endzustand springen.
-        Im Endzustand können beliebig $e$ und $f$ gelesen werden.
-        Anhand der Übergänge vom Startzustand bis zum Endzustand kann man
-        erkennen, dass der Endzustand nur erreicht werden kann, wenn jede
-        Zerlegung von $w$ die Kombination $fee$ enthält.
-        Spiegelt man das Wort $w$, erhält man in der Zerlegung die Kombination
-        $eef$.
-        Daraus folgt, dass der Automat $A'$ die gespiegelten Wörter des
-        Automaten $A$ akzeptiert. \\
-    	
-    	$L(A') \subseteq M_n$ \\
-   		Sei $w \in L(A')$, d.\,h. ein Wort, das vom Automaten akzeptiert wird.
-        Wir müssen nun zeigen, dass daraus folgt, dass $w \in M$ gilt.
-        Zunächst bemerken wir, dass im Startzustand beliebig viele $e$s gelesen
-        werden können und dass der Automat nur in den Folgezustand überführt
-        werden kann, wenn ein $f$ gelesen wird.
-        Um den Automaten in den Endzustand überführt werden kann, müssen
-        hintereinander ein $f$ und zwei $e$s gelesen werden.
-        Ist die Kombination nicht Teil des Wortes, so kann der Automat nicht in
-        den Endzustand gelangen.
-        Da $w$ diese Kombination beinhaltet, ist gezeigt dass $w$ gespiegelt
-        ein Eingabewort des Automaten $A$ ist. \\
-   		Insgesamt folgt, dass $L(A') = M$ gilt und das $A'$ die gespiegelten
-        Wörter von $A$ akzeptiert.  
-    	
-    	  
+        \begin{behaupt}
+            \begin{equation*}
+                L(A') = M
+            \end{equation*}
+        \end{behaupt}
+        \begin{proof} \hfill \\
+            \begin{enumerate}
+                \item $M \subseteq L(A')$ \\
+                    Sei $w \in M$ ein Wort, das vom Automaten $A'$ akzeptiert
+                    werden soll.
+                    So muss $w$ die gespiegelte Form eines Wortes sein, welches
+                    vom Automaten $A$ akzeptiert wird.
+                    Im Startzustand $\{p_3\}$ können zunächst beliebig viele
+                    $e$s gelesen werden.
+                    Damit $A'$ in den Folgezustand $\{p_3,p_2\}$ wechseln kann,
+                    muss ein $f$ gelesen werden.
+                    Sobald sich der Automat $A'$ in diesem Zustand ist, können
+                    beliebig viele $f$ gelesen werden.
+                    Beim Lesen eines $e$ wechselt $A'$ in den Zustand
+                    $\{p_3,p_2,p_1\}$.
+                    In diesem Zustand kann durch das Lesen eines $f$ in den
+                    vorherigen Zustand wechseln, oder durch das Lesen eines
+                    weiteren $e$ in den Endzustand springen.
+                    Im Endzustand können beliebig $e$ und $f$ gelesen werden.
+                    Anhand der Übergänge vom Startzustand bis zum Endzustand
+                    kann man erkennen, dass der Endzustand nur erreicht werden
+                    kann, wenn jede Zerlegung von $w$ die Kombination $fee$
+                    enthält.
+                    Spiegelt man das Wort $w$, erhält man in der Zerlegung die
+                    Kombination $eef$.
+                    Daraus folgt, dass der Automat $A'$ die gespiegelten Wörter
+                    des Automaten $A$ akzeptiert.
+                \item $L(A') \subseteq M$ \\
+                    Sei $w \in L(A')$, d.\,h. ein Wort, das vom Automaten
+                    akzeptiert wird.
+                    Wir müssen nun zeigen, dass daraus folgt, dass $w \in M$
+                    gilt.
+                    Zunächst bemerken wir, dass im Startzustand beliebig viele
+                    $e$s gelesen werden können und dass der Automat nur in den
+                    Folgezustand überführt werden kann, wenn ein $f$ gelesen
+                    wird.
+                    Um den Automaten in den Endzustand überführt werden kann,
+                    müssen hintereinander ein $f$ und zwei $e$s gelesen werden.
+                    Ist die Kombination nicht Teil des Wortes, so kann der
+                    Automat nicht in den Endzustand gelangen.
+                    Da $w$ diese Kombination beinhaltet, ist gezeigt dass $w$
+                    gespiegelt ein Eingabewort des Automaten $A$ ist.
+            \end{enumerate}
+            Aus a) und b) folgt $L(A') = M$.
+            $A'$ akzeptiert die gespiegelten Wörter aus $L(A)$.
+        \end{proof}
 
     	
 \end{enumerate}
