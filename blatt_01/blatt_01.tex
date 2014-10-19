@@ -121,7 +121,45 @@
         kann, wird auch von einem endlichen Automaten akzeptiert und ist daher
         regulär.
 
-    \item TODO
+    \item
+        \begin{equation}
+            A = \bigcup_{n \geq 0} L(A_n)
+        \end{equation}
+        Es wird davon ausgegangen, dass der Automat $A_n$ mit $n \mod 2 = 1$ das
+        Wort $w = a^nc$ akzeptiert; also dass der Zustand $p_{2n+1}$ auch bei
+        ungeradem $n$ ein Endzustand ist.
+
+        Die Sprache wäre wie folgt aufgebaut:
+        \begin{equation}
+            A =  \underbrace{\left\{ a^{2n}d \right\}}_A
+            \cup \underbrace{\left\{ a^{2n}db^{2n} \right\}}_B
+            \cup \underbrace{\left\{ a^{2n+1}c \right\}}_C
+            \cup \underbrace{\left\{ a^{2n+1}cb^{2n+1} \right\}}_D
+            \text{ für } n \geq 0
+        \end{equation}
+        Während es trivial ist endliche Automaten zu konstruieren, welche genau
+        die Teilmengen $A$ und $C$ als Sprache akzeptieren, ist dies für $B$
+        und $D$ nicht möglich.
+        Mit dem Pumping Lemma für reguläre Sprachen kann gezeigt werden, dass
+        Mengen der Form $\left\{ a^kcb^k \  | \  k \in \mathbb{N} \right\}$ nicht
+        zu der Familie der regulären Sprachen gehören.
+
+        Es ist möglich eine kontextfreie Grammatik anzugeben, die $A$
+        generiert.
+        \begin{equation*}
+            \begin{split}
+                S  &\rightarrow A \ |\  B \ |\  C \ |\  D \\
+                A  &\rightarrow A'd \\
+                A' &\rightarrow aaA' \ |\  \epsilon \\
+                B  &\rightarrow aaBbb \ |\ d \\
+                C  &\rightarrow aC'c \\
+                C' &\rightarrow aaC' \ |\  \epsilon \\
+                D  &\rightarrow aD'b \\
+                D' &\rightarrow aaD'bb \ |\ c
+            \end{split}
+        \end{equation*}
+        
+        
 
 \end{enumerate}
 
