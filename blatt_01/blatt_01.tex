@@ -144,30 +144,24 @@
         \begin{proof} \hfill \\
             \begin{enumerate}
                 \item $M \subseteq L(A')$ \\
-                    Sei $w \in M$ ein Wort, das vom Automaten $A'$ akzeptiert
-                    werden soll.
-                    So muss $w$ die gespiegelte Form eines Wortes sein, welches
-                    vom Automaten $A$ akzeptiert wird.
-                    Im Startzustand $\{p_3\}$ können zunächst beliebig viele
-                    $e$s gelesen werden.
-                    Damit $A'$ in den Folgezustand $\{p_3,p_2\}$ wechseln kann,
-                    muss ein $f$ gelesen werden.
-                    Sobald sich der Automat $A'$ in diesem Zustand ist, können
-                    beliebig viele $f$ gelesen werden.
-                    Beim Lesen eines $e$ wechselt $A'$ in den Zustand
-                    $\{p_3,p_2,p_1\}$.
-                    In diesem Zustand kann durch das Lesen eines $f$ in den
-                    vorherigen Zustand wechseln, oder durch das Lesen eines
-                    weiteren $e$ in den Endzustand springen.
-                    Im Endzustand können beliebig $e$ und $f$ gelesen werden.
-                    Anhand der Übergänge vom Startzustand bis zum Endzustand
-                    kann man erkennen, dass der Endzustand nur erreicht werden
-                    kann, wenn jede Zerlegung von $w$ die Kombination $fee$
-                    enthält.
-                    Spiegelt man das Wort $w$, erhält man in der Zerlegung die
-                    Kombination $eef$.
-                    Daraus folgt, dass der Automat $A'$ die gespiegelten Wörter
-                    des Automaten $A$ akzeptiert.
+                    Sei $w \in M$ ein Wort, dann hat $w$ die Form 
+                    $w = \{e,f\}^* \cdot fee \cdot \{e,f\}^*$.
+                    Wir müssen nun zeigen, dass $A'$ dieses Wort akzeptiert, 
+                    dass also $w \in L(A')$ gilt. Beginnt $w$ mit $e$ ändert
+                    sich der Zustand des Automaten nicht. Sobald ein $f$ 
+                    gelesen wird, springt der Automat in den Zustand 
+                    $\{p_3,p_2\}$. Falls weitere $f$ gelesen springt der
+                    Automat in keinen anderen Zustand. Wenn ein $e$ gelesen wird,
+                    springt der Automat in den Zustand $\{p_3,p_2,p_1\}$.
+                    Werden noch ein $e$ gelesen, wechselt der Automat in den Endzustand
+                    und es können nun Kombinationen aus $\{e,f\}^*$ gelesen werden,
+                    ändert sich der Zustand auch nicht mehr und $w$ wird akzeptiert,
+                    da es auch $fee$ enthält. Befindet sich der Automat noch im Zustand
+                    $\{p_3,p_2,p_1\}$ und es wird ein $f$ gelesen, so wird in den vorherigen 
+                    Zustand gesprungen. Dieser Zustandswechsel kann beliebig oft stattfinden.
+                    Wenn aber $fee$ gelesen wird, gelangt der Automat in den Endzustand.
+                    Daraus folgt $w \in L(A')$.
+                    
                 \item $L(A') \subseteq M$ \\
                     Sei $w \in L(A')$, d.\,h. ein Wort, das vom Automaten
                     akzeptiert wird.
