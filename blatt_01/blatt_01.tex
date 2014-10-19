@@ -6,14 +6,22 @@
 \usepackage{lmodern}
 \usepackage[ngerman]{babel}
 
+% math
 \usepackage{amsmath, amssymb, amsfonts, amsthm, mathtools}
 \allowdisplaybreaks
 \newtheorem*{behaupt}{Behauptung}
 
+% tikz
+\usepackage{tikz}
+\usetikzlibrary{arrows,automata}
+
+% misc
+\usepackage{enumerate}
+
 \title{Formale Grundlagen der Informatik II}
 \subtitle{Aufgabenblatt 1}
 \author{
-    Jan-Hendrik Briese (TODO) \\
+    Jan-Hendrik Briese (6523408) \\
     Lennart Braun (6523742) \\
     Marc Strothmann (6537646) \\
     Maximilian Knapperzbusch (6535090)
@@ -165,14 +173,181 @@
 
 \section*{Übungsaufgabe 1.4}
 \begin{enumerate}
-    \item TODO
-    \item TODO
     \item
+        Das im Folgenden beschriebene Verfahren konstruiert aus einem DFA
+        $A = \left( Q, \Sigma, \delta, \left\{ q^0 \right\}, F \right)$
+        in drei Schritten einen DFA
+        $A' = \left( Q', \Sigma, \delta', \left\{ q'^0 \right\}, F' \right)$
+        mit $L(A') = \left\{ w^{rev} \ |\ w \in L(A) \right\}$.
+
+        \begin{enumerate}[1.]
+            \item
+                Start- und Endzustände werden vertauscht:
+                \begin{align*}
+                    F'_N  &= \left\{ q^0 \right\} \\
+                    Q^0_N &= \left\{ q \ |\ q \in F \right\}
+                \end{align*}
+                Das Zwischenergebnis ist (insbesondere bei $|F| > 1$) ein NFA 
+                $N_1 = \left( Q, \Sigma, \delta, Q^0_N, F'_N \right)$.
+
+            \item
+                Die Richtungen der Kanten werden umgekehrt.
+                \begin{equation*}
+                    \delta' = \left\{ (q_k, \sigma, q_l)
+                    \ |\ (q_l, \sigma, q_k) \in \delta \right\}
+                \end{equation*}
+                Das Zwischenergebnis ist ein NFA
+                $N_2 = \left( Q, \Sigma, \delta', Q^0_N, F'_N \right)$.
+
+            \item
+                Aus dem NFA $N_2$ wird mittels Potenzautomatenkonstruktion ein
+                äquivalenter vollständiger deterministischer Automat
+                konstruiert.
+                Das genaue Verfahren ist bereits aus den Präsenzaufgaben bekannt.
+                Das Ergebnis ist ein DFA
+                $A' = \left( Q', \Sigma, \delta', {q'^0}, F' \right)$,
+                der die oben definierte Sprache akzeptiert.
+        \end{enumerate}
+
+    \item
+        Sei $M$ die Menge aller Wörter über $\Sigma = \{ e, f \}$, die das
+        Teilwort $eef$ enthalten.
+        Sei $A$ der folgende DFA.
+        \begin{center}
+            \begin{tikzpicture}[->,>=stealth',shorten >=1pt,auto,node distance=1.8cm,
+                                semithick]
+              \tikzstyle{every state}=[fill=white,draw=black,text=black]
+            
+              \node[initial,state] 	(A)              {$p_0$};
+              \node[state]         	(B) [right of=A] {$p_1$};
+              \node[state]         	(C) [right of=B] {$p_2$};
+              \node[accepting,state](D) [right of=C] {$p_3$};
+            
+              \path (A) edge [loop above] 	node {f} (A)
+                        edge [bend left]  	node {e} (B)
+                    (B) edge [bend left]	node {f} (A)
+                        edge 				node {e} (C)
+                    (C)	edge [loop above]	node {e} (C)
+                        edge				node {f} (D)
+                    (D)	edge [loop above]	node {e,f} (D);
+            \end{tikzpicture}
+        \end{center}
+        \begin{behaupt}
+            L(A) = M
+        \end{behaupt}
+        \begin{proof}
+            \begin{enumerate}
+                \item $L(A) \subseteq M$ \hfill \\
+                    Ein Wort $w \in L(A)$ wird von $L(A)$ akzeptiert.
+                    Damit muss diese Wort auch die Zeichenkette $eef$ enthalten,
+                    um aus dem Startzustand $p_0$ den Endzustand $p_3$ erreichen
+                    zu können.
+                    Der Endzustand $p_3$ kann aus $p_2$ nur über eine $f$-Kante
+                    erreicht werden.
+                    Mit einer $e$-Kante ist der Übergang aus $p_1$ auf $p_2$
+                    bzw. die Schleife in $p_2$ möglich.
+                    Um den Zustand $p_1$ aus dem Startzustand erreichen zu
+                    können, wird ebenfalls eine $e$-Kante benötigt.
+                    Damit ist in $w$ die Zeichenkette $eef$ enthalten und es
+                    gilt $w \in M$.
+
+                \item $M \subseteq L(A)$ \hfill \\
+                    Sei nun $w\in M$.
+                    Es gibt somit eine Stelle, an der das Wort $eef$ das erste
+                    Mal auftritt.
+                    Das Wort $w$ lässt sich somit zerlegen in
+                    $x\cdot eef \cdot x'$.
+                    Da das Teilwort $eef$ zum ersten Mal auftreten muss, ist
+                    dieses in $x$ nicht enthalten.
+                    $A$ kann $x$ und $x'$ vollständig lesen, darf sich nach dem
+                    Lesen von $x$ jedoch nicht in $p_3$ (Endzustand) befinden,
+                    da $A$ sonst akzeptiert.
+                    Dies würde einen Widerspruch zu der Aussage erzeugen, dass
+                    $A$ nur mit dem Teilwort $eef$ akzeptieren kann.
+                    $A$ kann sich nach dem Lesen von $x$ nur in den Zuständen
+                    $p_0$, $p_1$ oder $p_2$ befinden.
+                    Aus all diesen Zuständen ist es möglich $A$ durch das
+                    Teilwort $eef$ in den Endzustand $p_3$ zu überführen.
+                    Im Endzustand kann $x'$ vollständig gelesen werden.
+                    Das gesamte Wort $w$ wird akzeptiert und es gilt
+                    $w\in L(A)$.
+            \end{enumerate}
+            Aus a) und b) folgt $L(A) = M$.
+        \end{proof}
+
+    \item
+        Der reguläre Ausdruck $R$ beschreibt diese Wortmenge.
         \begin{equation}
             R = (e + f)^* \cdot eef \cdot (e + f)^*
         \end{equation}
         
-    \item TODO
+    \item Anwendung des eben beschriebenen Verfahrens auf $A$.
+        \begin{enumerate}[1.]
+            \item \hfill \\
+                \begin{center}
+                    \begin{tikzpicture}[->,>=stealth',shorten >=1pt,auto,node distance=1.8cm,
+                                        semithick]
+                      \tikzstyle{every state}=[fill=white,draw=black,text=black]
+                    
+                      \node[accepting,state] 	(A)              {$p_0$};
+                      \node[state]         	(B) [right of=A] {$p_1$};
+                      \node[state]         	(C) [right of=B] {$p_2$};
+                      \node[initial right,state](D) [right of=C] {$p_3$};
+                    
+                      \path (A) edge [loop above] 	node {f} (A)
+                                edge [bend left]  	node {e} (B)
+                            (B) edge [bend left]	node {f} (A)
+                                edge 				node {e} (C)
+                            (C)	edge [loop above]	node {e} (C)
+                                edge				node {f} (D)
+                            (D)	edge [loop above]	node {e,f} (D);
+                    \end{tikzpicture}
+                \end{center}
+
+            \item \hfill \\
+                \begin{center}
+                    \begin{tikzpicture}[<-,>=stealth',shorten >=1pt,auto,node distance=1.8cm,
+                                                semithick, every loop/.style={<-}]
+                        \tikzstyle{every state}=[fill=white,draw=black,text=black]
+                            
+                        \node[accepting,state] 	(A)              {$p_0$};
+                        \node[state]         	(B) [right of=A] {$p_1$};
+                        \node[state]         	(C) [right of=B] {$p_2$};
+                        \node[initial right,state](D) [right of=C] {$p_3$};
+                            
+                        \path 	(A) edge [loop above] 	node {f} (A)
+                                    edge [bend left]  	node {e} (B)
+                                (B) edge [bend left]	node {f} (A)
+                                    edge 				node {e} (C)
+                                (C)	edge [loop above]	node {e} (C)
+                                    edge				node {f} (D)
+                                (D)	edge [loop above]	node {e,f} (D);
+                    \end{tikzpicture}
+                \end{center}
+
+            \item \hfill \\
+                \begin{center}
+                    \begin{tikzpicture}[<-,>=stealth',shorten >=1pt,auto,node distance=3.4cm,
+                                                        semithick, every loop/.style={<-}]
+                        \tikzstyle{every state}=[fill=white,draw=black,text=black]
+                                    
+                        \node[accepting,state] 	(A)              {$\{p_3,p_2,p_1,p_0\}$};
+                        \node[state]         	(B) [right of=A] {$\{p_3,p_2,p_1\}$};
+                        \node[state]         	(C) [right of=B] {$\{p_3,p_2\}$};
+                        \node[initial right,state](D) [right of=C] {$\{p_3\}$};
+                                    
+                        \path 	(D)	edge	[loop above]	node	{e}		(D)
+                                (C)	edge					node	{f}		(D)
+                                    edge	[loop above]	node	{f}		(C)
+                                    edge	[bend left]		node	{f}		(B)
+                                (B)	edge	[bend left]		node	{e}		(C)
+                                (A)	edge	[loop above]	node	{e,f}	(A)
+                                    edge					node	{e}		(B);
+                    \end{tikzpicture}
+                \end{center}
+
+        \end{enumerate}
+
     \item Begründen Sie die Korrektheit der Lösung. \\
         \begin{behaupt}
             \begin{equation*}
