@@ -81,9 +81,46 @@
 \section*{Übungsaufgabe 2.4}
 \begin{enumerate}
     \item
+
     \item
+        Sei $R_W$ ein regulärer Ausdruck, der die Menge $W$ beschreibt.
+        Sei $R_U$ ein $\omega$-regulärer Ausdruck, der die Menge $U$ beschreibt.
+        Es gelten also $M_{R_W} = W$ und $M_{R_U} = U$.
+        Nach den Definitionen 1.6 und 1.17 ist $R_W \cdot R_U$ ein
+        $\omega$-regulärer Ausdruck, der die Menge $M_{R_W} \cdot M_{R_U} = W \cdot U$
+        beschreibt.
+
     \item
+        $R_U$ hat die Form $R_U = A_1 B_1^\omega + \cdots + A_n B_n^\omega$.
+        \begin{equation}
+            \begin{split}
+                R_W \cdot R_U
+                &= R_W \cdot \left( A_1 B_1^\omega + \cdots + A_n B_n^\omega \right) \\
+                &= A_1' B_1^\omega + \cdots + A_n' B_n^\omega \text{ mit } A_i' = R_W \cdot A_i
+            \end{split}
+        \end{equation}
+        $R_W \cdot R_U$ ist also ebenfalls ein wohlgeformter $\omega$-regulärer Ausdruck.
+        Nach 1.6 beschreibt $R_w \cdot R_U$ die gesuchte Menge
+        $M_{R_W \cdot R_U} = M_{R_W} \cdot R_{R_U} = W \cdot U$.
+
+        Das Verfahren besteht aus endlich vielen Schritten und terminiert daher immer.
+
     \item
+        \begin{align}
+            R_{A_W} &= \left( e + f \right)^* \cdot eef \cdot \left( e + f \right)^* \\
+            R_{A_U} &= a \cdot \left( ba^*c \right)^\omega + b \cdot \left( cab \right)^\omega \\
+            \begin{split}
+                R_{A_w \cdot A_U}
+                &= \left( \left( e + f \right)^* \cdot eef \cdot \left( e + f \right)^* \right)
+                \cdot \left( a \cdot \left( ba^*c \right)^\omega + b \cdot \left( cab \right)^\omega \right) \\
+                &= \underbrace{\left( e + f \right)^* \cdot eef \cdot \left( e + f \right)^* \cdot a}_{A_1}
+                \cdot \underbrace{\left( ba^*c \right)^\omega}_{B_1^\omega}
+                + \underbrace{\left( e + f \right)^* \cdot eef \cdot \left( e + f \right)^* \cdot b}_{A_2}
+                \cdot \underbrace{\left( cab \right)^\omega}_{B_2^\omega} \\
+                &= A_1B_1^\omega + A_2B_2^\omega
+            \end{split}
+        \end{align}
+        
 \end{enumerate}
 
 
