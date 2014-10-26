@@ -82,6 +82,12 @@
 			Jeder ursprüngliche Startzustand in $A$ wird nun zu einem Start- und Endzustand in $A'$ ($Q_0=F'$). Alle Kanten, die $A$ aus $q_k\in Q$in einen Endzustand überführt haben, werden in $A'$ kopiert und bilden eine neue Kante von $q'_k$ in die konstruierten Endzustände in $A'$.\\
 			$\delta'=\delta \cup \{(q_k, a, q_l)|(q_k, a, q_f)\in\delta, q_f\in F, q_l \in Q_0, q_k \in Q \}$\\
 			Endzustände in $A$, die keinen Folgezustand besitzen, können in $A'$ weggelassen werden. $Q'=Q\backslash\{q_l|\nexists(q_l,a,q_k)\}$ mit $q_k\in Q$ und $q_l\in F$. Der konstruierte Automat $A'=(Q',\Sigma',\delta',Q_0',F')$ ist ein Büchi-Automat mit Omega-Abschluss.\\
+			\begin{enumerate}[1.]
+				\item
+				\item $L^{\omega}(A') \subseteq (L(A_{2.3}))^{\omega}$ \\
+				Sei $w \in L^{\omega}(A')$. Dann lässt sich $w$ in Abschnitte $a_i$ aufteilen so dass sich $A'$ nach dem Einlesen von $a_i$ in $q_0$ befindet. $w=a_1 a_2 a_3 ...$, Nach Konstruktion kommt man nur wieder nach $q_0$, wenn $A_{2.3}$ in einen Endzustand gewechselt wäre. Daher gilt $a_i \in (L(A_{2.3}))$. Da $w$ eine unendliche Folge von $a_i$ ist gilt $w \in (L(A_{2.3}))^{\omega}$.
+			\end{enumerate}
+			Aus 1. und 2. folgt $(L(A_{2.3}))^{\omega} = L^{\omega}(A')$
 \end{enumerate}
 
 \section*{Übungsaufgabe 2.4}
