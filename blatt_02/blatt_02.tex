@@ -33,24 +33,23 @@
 
 \section*{Übungsaufgabe 2.3}
 \begin{enumerate}
-		\item[zu 1.:] \textbf{Lösung:}\\
+		\item
 		\begin{align*}
             L(A_{2.3}) &= a(ba^*c)^*+bc(abc)^*(e+a) \\
             L(A_{2.3})^{\omega} &= a(ba^*c)^{\omega}+b(cab)^{\omega} \\
             (L(A_{2.3}))^{\omega} &= (a(ba^*c)^*+bc(abc)^*(e+a))^{\omega} \\
 		\end{align*}
 
-		\item[zu 2.:] \textbf{Lösung:}\\
+		\item
 		$L^{\omega}(A_{2.3})$ ist die Sprache, die von einem Büchi-Automaten mit
         gleicher Konstruktion wie der vorliegende NFA akzeptiert wird.
         Zwei Wörter sind $w_1=a(bc)^{\omega}$ und $w_2=b(cab)^{\omega}$.
 
-		$(L(A_{2.3}))^{\omega}$ ist eine Sprache, dessen Teilwörter akzeptierte
-        Wörter des NFA sind. Diese Teilwörter bilden (konkateniert) wiederum
-        $\omega$-Wörter der genannten Sprache.
+        $(L(A_{2.3}))^\omega$ ist eine $\omega$-Sprache, die alle $\omega$-Wörter
+        enthält, die sich aus den Wörtern aus $L(A_{2.3})$ zusammensetzen lassen.
         Zwei dieser Wörter sind u.A. $w_3=(bca)^{\omega}$ oder $w_4=(bce)^{\omega}$.
 
-		\item[zu 3.:] \textbf{Lösung:}\\
+		\item
 			\begin{equation*}
 				\begin{tikzpicture}[->,>=stealth',shorten >=1pt,auto,node distance=3.5cm,
 				                    semithick]
