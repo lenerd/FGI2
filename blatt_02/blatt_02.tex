@@ -34,16 +34,22 @@
 \section*{Übungsaufgabe 2.3}
 \begin{enumerate}
 		\item[zu 1.:] \textbf{Lösung:}\\
-		\begin{equation*}
-			\begin{split}
-				L(A_{2.3})&= a(ba^*c)^*+bc(abc)^*(e+a)\\
-				L(A_{2.3})^{\omega}&= a(ba^*c)^{\omega}+b(cab)^{\omega}\\
-				(L(A_{2.3}))^{\omega}&= (a(ba^*c)^*+bc(abc)^*(e+a))^{\omega}\\
-			\end{split}
-		\end{equation*}
+		\begin{align*}
+            L(A_{2.3}) &= a(ba^*c)^*+bc(abc)^*(e+a) \\
+            L(A_{2.3})^{\omega} &= a(ba^*c)^{\omega}+b(cab)^{\omega} \\
+            (L(A_{2.3}))^{\omega} &= (a(ba^*c)^*+bc(abc)^*(e+a))^{\omega} \\
+		\end{align*}
+
 		\item[zu 2.:] \textbf{Lösung:}\\
-		$L^{\omega}(A_{2.3})$ ist die Sprache, die von einem Büchi-Automaten mit gleicher Konstruktion wie der vorliegende NFA akzeptiert wird. Zwei Wörter sind $w_1=a(bc)^{\omega}$ (bzw. $w_1=a(ba^*c)^{\omega}$) und $w_2=b(cab)^{\omega} $.\\
-		$(L(A_{2.3}))^{\omega}$ ist eine Sprache, dessen Teilwörter akzeptierte Wörter des NFA sind. Diese Teilwörter bilden (konkateniert) wiederum $\omega$-Wörter der genannten Sprache. Zwei dieser Wörter sind u.A. $w_3=(bca)^{\omega}$ oder $w_4=(bce)^{\omega}$.\\
+		$L^{\omega}(A_{2.3})$ ist die Sprache, die von einem Büchi-Automaten mit
+        gleicher Konstruktion wie der vorliegende NFA akzeptiert wird.
+        Zwei Wörter sind $w_1=a(bc)^{\omega}$ und $w_2=b(cab)^{\omega}$.
+
+		$(L(A_{2.3}))^{\omega}$ ist eine Sprache, dessen Teilwörter akzeptierte
+        Wörter des NFA sind. Diese Teilwörter bilden (konkateniert) wiederum
+        $\omega$-Wörter der genannten Sprache.
+        Zwei dieser Wörter sind u.A. $w_3=(bca)^{\omega}$ oder $w_4=(bce)^{\omega}$.
+
 		\item[zu 3.:] \textbf{Lösung:}\\
 			\begin{equation*}
 				\begin{tikzpicture}[->,>=stealth',shorten >=1pt,auto,node distance=3.5cm,
@@ -71,7 +77,7 @@
 				\end{tikzpicture}
 			\end{equation*}
 			\textbf{Konstruktionsverfahren:}\\
-			Mit dem folgenden Verfahren wird aus einem NFA ein nicht-deterministischer Büchi-Automat $A'$ konstruiert, der die Sprache $(L(A))^{\omega}$ akzeptiert.\\
+			Mit dem folgenden Verfahren wird aus einem NFA $A$ ein nicht-deterministischer Büchi-Automat $A'$ konstruiert, der die Sprache $(L(A))^{\omega}$ akzeptiert.\\
 			Sei $A=(Q,\Sigma,\delta,Q_0,F)$ ein gegebener NFA.\\
 			Jeder ursprüngliche Startzustand in $A$ wird nun zu einem Start- und Endzustand in $A'$ ($Q_0=F'$). Alle Kanten, die $A$ aus $q_k\in Q$in einen Endzustand überführt haben, werden in $A'$ kopiert und bilden eine neue Kante von $q'_k$ in die konstruierten Endzustände in $A'$.\\
 			$\delta'=\delta \cup \{(q_k, a, q_l)|(q_k, a, q_f)\in\delta, q_f\in F, q_l \in Q_0, q_k \in Q \}$\\
