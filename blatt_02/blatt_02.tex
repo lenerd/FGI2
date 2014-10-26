@@ -88,8 +88,11 @@
                 \end{equation}
             \end{behaupt}
             \begin{proof} \hfill \\
-                \begin{enumerate}[1.]
+                    \begin{enumerate}[1.]
                     \item
+                    $(L(A_{2.3}))^\omega \subseteq L^\omega(A')$ \\
+                    Sei $w \in (L(A_{2.3}))^\omega $. Dann gilt $w = a_1a_2a_3....$ mit $a_i \in L(A\{2_3\}) $ für alle $i$. \\
+                    Nach dem Lesen des Teilwertes $a_i$ findet sich $A\{2_3\}$ in einem Endzustand. Nach Konstruktion befindet sich $A'$ nichtdeterministisch in $F'=Q_0$. Anschließend kann das nächste $a_i$ gelesen werden. da $w$ unendlich lang ist, befindet sich $A'$ unendlich oft in $F'$ und akzeptiert $w$. Daraus folgt $w \in L^\omega(A')$. 
                     \item $L^{\omega}(A') \subseteq (L(A_{2.3}))^{\omega}$ \\
                     Sei $w \in L^{\omega}(A')$. Dann lässt sich $w$ in Abschnitte $a_i$ aufteilen so dass sich $A'$ nach dem Einlesen von $a_i$ in $q_0$ befindet. $w=a_1 a_2 a_3 ...$, Nach Konstruktion kommt man nur wieder nach $q_0$, wenn $A_{2.3}$ in einen Endzustand gewechselt wäre. Daher gilt $a_i \in (L(A_{2.3}))$. Da $w$ eine unendliche Folge von $a_i$ ist gilt $w \in (L(A_{2.3}))^{\omega}$.
                 \end{enumerate}
