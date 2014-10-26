@@ -33,9 +33,49 @@
 
 \section*{Übungsaufgabe 2.3}
 \begin{enumerate}
-    \item
-    \item
-    \item
+		\item[zu 1.:] \textbf{Lösung:}\\
+		\begin{equation*}
+			\begin{split}
+				L(A_{2.3})&= a(ba^*c)^*+bc(abc)^*(e+a)\\
+				L(A_{2.3})^{\omega}&= a(ba^*c)^{\omega}+b(cab)^{\omega}\\
+				(L(A_{2.3}))^{\omega}&= (a(ba^*c)^*+bc(abc)^*(e+a))^{\omega}\\
+			\end{split}
+		\end{equation*}
+		\item[zu 2.:] \textbf{Lösung:}\\
+		$L^{\omega}(A_{2.3})$ ist die Sprache, die von einem Büchi-Automaten mit gleicher Konstruktion wie der vorliegende NFA akzeptiert wird. Zwei Wörter sind $w_1=a(bc)^{\omega}$ (bzw. $w_1=a(ba^*c)^{\omega}$) und $w_2=b(cab)^{\omega} $.\\
+		$(L(A_{2.3}))^{\omega}$ ist eine Sprache, dessen Teilwörter akzeptierte Wörter des NFA sind. Diese Teilwörter bilden (konkateniert) wiederum $\omega$-Wörter der genannten Sprache. Zwei dieser Wörter sind u.A. $w_3=(bca)^{\omega}$ oder $w_4=(bce)^{\omega}$.\\
+		\item[zu 3.:] \textbf{Lösung:}\\
+			\begin{equation*}
+				\begin{tikzpicture}[->,>=stealth',shorten >=1pt,auto,node distance=3.5cm,
+				                    semithick]
+				  \tikzstyle{every state}=[fill=white,draw=black,text=black]
+				
+				  \node[initial,accepting,state] 	(A)              {$q_0$};
+				  \node[state]         	(B) [right of=A] {$q_3$};
+				  \node[state]         	(C) [right of=B] {$q_4$};
+				  \node[state](D) [below of=C] {$q_5$};
+				  \node[state]			(E) [below of=A] {$q_1$};
+				  \node[state]			(F)	[below of=B] {$q_2$};
+				
+				  \path (A) edge [loop above] 	node {a} (A)
+				            edge 				node {b} (B)
+				        (B) edge				node {c} (C)
+				        (C) edge 				node {a} (D)
+				        	edge [bend right]	node {a,e} (A)
+				        (D) edge				node {b} (B)
+				        (A) edge				node {a} (E)
+				        (E) edge [bend left]	node {b} (F)
+				        (F) edge [bend left]	node {c} (E)
+				        	edge				node {c} (A)
+				        	edge [loop below]	node {a} (F);
+				\end{tikzpicture}
+			\end{equation*}
+			\textbf{Konstruktionsverfahren:}\\
+			Mit dem folgenden Verfahren wird aus einem NFA ein nicht-deterministischer Büchi-Automat $A'$ konstruiert, der die Sprache $(L(A))^{\omega}$ akzeptiert.\\
+			Sei $A=(Q,\Sigma,\delta,Q_0,F)$ ein gegebener NFA.\\
+			Jeder ursprüngliche Startzustand in $A$ wird nun zu einem Start- und Endzustand in $A'$ ($Q_0=F'$). Alle Kanten, die $A$ aus $q_k\in Q$in einen Endzustand überführt haben, werden in $A'$ kopiert und bilden eine neue Kante von $q'_k$ in die konstruierten Endzustände in $A'$.\\
+			$\delta'=\delta \cup \{(q_k, a, q_l)|(q_k, a, q_f)\in\delta, q_f\in F, q_l \in Q_0, q_k \in Q \}$\\
+			Endzustände in $A$, die keinen Folgezustand besitzen, können in $A'$ weggelassen werden. $Q'=Q\backslash\{q_l|\nexists(q_l,a,q_k)\}$ mit $q_k\in Q$ und $q_l\in F$. Der konstruierte Automat $A'=(Q',\Sigma',\delta',Q_0',F')$ ist ein Büchi-Automat mit Omega-Abschluss.\\
 \end{enumerate}
 
 \section*{Übungsaufgabe 2.4}
