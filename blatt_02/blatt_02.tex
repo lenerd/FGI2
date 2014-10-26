@@ -77,24 +77,56 @@
 				\end{tikzpicture}
 			\end{equation*}
 			\textbf{Konstruktionsverfahren:}\\
-			Mit dem folgenden Verfahren wird aus einem NFA $A$ ein nicht-deterministischer Büchi-Automat $A'$ konstruiert, der die Sprache $(L(A))^{\omega}$ akzeptiert.\\
+			Mit dem folgenden Verfahren wird aus einem NFA $A$ ein
+            nicht-deterministischer Büchi-Automat $A'$ konstruiert, der die
+            Sprache $(L(A))^{\omega}$ akzeptiert.\\
 			Sei $A=(Q,\Sigma,\delta,Q_0,F)$ ein gegebener NFA.\\
-			Jeder ursprüngliche Startzustand in $A$ wird nun zu einem Start- und Endzustand in $A'$ ($Q_0=F'$). Alle Kanten, die $A$ aus $q_k\in Q$in einen Endzustand überführt haben, werden in $A'$ kopiert und bilden eine neue Kante von $q'_k$ in die konstruierten Endzustände in $A'$.\\
-			$\delta'=\delta \cup \{(q_k, a, q_l)|(q_k, a, q_f)\in\delta, q_f\in F, q_l \in Q_0, q_k \in Q \}$\\
-			Endzustände in $A$, die keinen Folgezustand besitzen, können in $A'$ weggelassen werden. $Q'=Q\backslash\{q_l|\nexists(q_l,a,q_k)\}$ mit $q_k\in Q$ und $q_l\in F$. Der konstruierte Automat $A'=(Q',\Sigma',\delta',Q_0',F')$ ist ein Büchi-Automat mit Omega-Abschluss.\\
+			Jeder ursprüngliche Startzustand in $A$ wird nun zu einem Start- und
+            Endzustand in $A'$ ($Q_0=F'$).
+            Alle Kanten, die $A$ aus $q_k\in Q$in einen Endzustand überführt
+            haben, werden in $A'$ kopiert und bilden eine neue Kante von $q'_k$
+            in die konstruierten Endzustände in $A'$.
+            \begin{equation}
+                \delta'=\delta \cup \{(q_k, a, q_l)|(q_k, a, q_f)\in\delta, q_f\in F, q_l \in Q_0, q_k \in Q \}
+            \end{equation}
+			Endzustände in $A$, die keinen Folgezustand besitzen, können in $A'$
+            weggelassen werden.
+            \begin{equation}
+                Q' = Q \backslash \left\{ q_l \ |\ \nexists (q_l,a,q_k) \in \delta \right\} \text{ mit } q_k\in Q \text{ und } q_l\in F
+            \end{equation}
+            Der konstruierte Automat $A'=(Q',\Sigma,\delta',Q_0,F')$ akzeptiert
+            als Büchi-Automat den Omega-Abschluss von $L(A)$.
             \begin{behaupt}
                 \begin{equation}
                     \left( L\left( A_{2.3} \right) \right)^\omega = L^\omega \left( A' \right)
                 \end{equation}
             \end{behaupt}
             \begin{proof} \hfill \\
-                    \begin{enumerate}[1.]
+                \begin{enumerate}[1.]
                     \item
                     $(L(A_{2.3}))^\omega \subseteq L^\omega(A')$ \\
-                    Sei $w \in (L(A_{2.3}))^\omega $. Dann gilt $w = a_1a_2a_3....$ mit $a_i \in L(A\{2_3\}) $ für alle $i$. \\
-                    Nach dem Lesen des Teilwertes $a_i$ findet sich $A\{2_3\}$ in einem Endzustand. Nach Konstruktion befindet sich $A'$ nichtdeterministisch in $F'=Q_0$. Anschließend kann das nächste $a_i$ gelesen werden. da $w$ unendlich lang ist, befindet sich $A'$ unendlich oft in $F'$ und akzeptiert $w$. Daraus folgt $w \in L^\omega(A')$. 
+                    Sei $w \in (L(A_{2.3}))^\omega $.
+                    Dann gilt $w = a_1a_2a_3....$ mit $a_i \in L(A\{2_3\})$ für
+                    alle $i$. \\
+                    Nach dem Lesen des Teilwortes $a_i$ findet sich $A\{2_3\}$
+                    in einem Endzustand.
+                    Nach Konstruktion befindet sich $A'$ nichtdeterministisch in
+                    $F'=Q_0$.
+                    Anschließend kann das nächste $a_i$ gelesen werden.
+                    Da $w$ unendlich lang ist, befindet sich $A'$ unendlich oft
+                    in $F'$ und akzeptiert $w$.
+                    Daraus folgt $w \in L^\omega(A')$. 
+
                     \item $L^{\omega}(A') \subseteq (L(A_{2.3}))^{\omega}$ \\
-                    Sei $w \in L^{\omega}(A')$. Dann lässt sich $w$ in Abschnitte $a_i$ aufteilen so dass sich $A'$ nach dem Einlesen von $a_i$ in $q_0$ befindet. $w=a_1 a_2 a_3 ...$, Nach Konstruktion kommt man nur wieder nach $q_0$, wenn $A_{2.3}$ in einen Endzustand gewechselt wäre. Daher gilt $a_i \in (L(A_{2.3}))$. Da $w$ eine unendliche Folge von $a_i$ ist gilt $w \in (L(A_{2.3}))^{\omega}$.
+                    Sei $w \in L^{\omega}(A')$.
+                    Dann lässt sich $w$ in Abschnitte $a_i$ aufteilen so dass
+                    sich $A'$ nach dem Einlesen von $a_i$ in $q_0$ befindet.
+                    $w=a_1 a_2 a_3 ...$.
+                    Nach Konstruktion kommt man nur wieder nach $q_0$, wenn
+                    $A_{2.3}$ in einen Endzustand gewechselt wäre.
+                    Daher gilt $a_i \in (L(A_{2.3}))$.
+                    Da $w$ eine unendliche Folge von $a_i$ ist gilt
+                    $w \in (L(A_{2.3}))^{\omega}$.
                 \end{enumerate}
                 Aus 1. und 2. folgt $(L(A_{2.3}))^{\omega} = L^{\omega}(A')$
             \end{proof}
