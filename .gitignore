@@ -110,3 +110,6 @@ sympy-plots-for-*.tex/
 
 # pdf-Files
 *.pdf
+
+# temp vim
+*.swp
