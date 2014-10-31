@@ -1,0 +1,55 @@
+\documentclass[a4paper]{scrartcl}
+
+% font/encoding packages
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage[ngerman]{babel}
+
+% math
+\usepackage{amsmath, amssymb, amsfonts, amsthm, mathtools}
+\allowdisplaybreaks
+\newtheorem*{behaupt}{Behauptung}
+
+% tikz
+\usepackage{tikz}
+\usetikzlibrary{arrows,automata}
+
+% misc
+\usepackage{enumerate}
+
+\title{Formale Grundlagen der Informatik II}
+\subtitle{Aufgabenblatt 2}
+\author{
+    Jan-Hendrik Briese (6523408) \\
+    Lennart Braun (6523742) \\
+    Marc Strothmann (6537646) \\
+    Maximilian Knapperzbusch (6535090)
+}
+\date{zum 27. Oktober 2014}
+
+\begin{document}
+\maketitle
+
+\section*{Übungsaufgabe 3.3} 
+Schnitt von $\omega$-Sprachen
+\begin{enumerate}[1.]
+    \item Bestimmen Sie $L(A_1 ), L(A_2 ), L^{\omega}(A_1 ) und L^{\omega}(A_2 )$.
+    \item Konstruieren Sie die initiale Zusammenhangskomponente des Produktautomaten 
+        $A_3$ im Sinne von Satz 1.8 bzw. Lemma 1.19. \textit{Hinweis:} Sie benötigen 
+        3 Zustände.
+    \item Bestimmen Sie $L(A_3)$ und $L^{\omega}(A_3)$. Vergleichen Sie $L(A_3)$ mit 
+        $L(A_1) \cap L(A_2)$ und $L^{\omega}(A_3)$ mit $L^{\omega}(A_1) \cap L^{\omega}(A_2)$.
+    \item Konstruieren Sie die initiale Zusammenhangskomponente des Produktautomaten 
+        $A_4$ im Sinne von Satz 1.21. \textit{Hinweis:} Sie benötigen 6 Zustände.
+    \item Bestimmen Sie $L(A_4)$ und $L^{\omega}(A 4 )$. Vergleichen Sie $L(A_4)$ mit 
+        $L(A_1) \cap L(A_2)$ und $L^{\omega}(A_4)$ mit $L^{\omega}(A_1) \cap L^{\omega}(A_2)$.
+\end{enumerate}
+\section*{Übungsaufgabe 3.4}
+Prüfen Sie für alle Zweierkombinationen der folgenden vier Transitionssysteme, ob 
+diese bisimilar sind. Geben Sie für die bisimilaren Kombinationen die 
+Bisimulationsrelation explizit an. Zeigen Sie für nichtbisimilaren Kombinationen, 
+dass keine Bisimulationsrelation angegeben werden kann. Hinweis: Sie können sich 
+Arbeit sparen, wenn sie beachten, dass folgende Symmetrie gilt: 
+$TS_1 \Leftrightarrow TS_2$ impliziert $TS_2 \Leftrightarrow TS_1$.
+\end{document}
