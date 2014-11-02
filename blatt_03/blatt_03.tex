@@ -38,23 +38,40 @@ Schnitt von $\omega$-Sprachen
         Darstellung der Sprachen in Form von Regulären Ausdrücken
         \begin{align*}
             L(A_1) &= \left( a + b \right)^* \\
-            L(A_2) &= a^*b \cdot \left( a + ba^*b \right)^* \\
+            \begin{split}
+                L(A_2) &= a^*b \cdot \left( a + ba^*b \right)^* \\
+                &= \left( a^*ba^*b \right)^* \cdot a^*ba^*
+            \end{split} \\
             L^\omega(A_1) &= \left( a + ba^*b \right)^\omega + \left( a + ba^*b \right)^* \cdot b a^\omega \\
             L^\omega(A_2) &= a^* b \cdot \left( a + ba^*b \right)^\omega
         \end{align*}
 
     \item Konstruieren Sie die initiale Zusammenhangskomponente des Produktautomaten 
         $A_3$ im Sinne von Satz 1.8 bzw. Lemma 1.19. \textit{Hinweis:} Sie benötigen 
-        3 Zustände.
+        3 Zustände. \\
+        TODO
 
     \item Bestimmen Sie $L(A_3)$ und $L^{\omega}(A_3)$. Vergleichen Sie $L(A_3)$ mit 
-        $L(A_1) \cap L(A_2)$ und $L^{\omega}(A_3)$ mit $L^{\omega}(A_1) \cap L^{\omega}(A_2)$.
+        $L(A_1) \cap L(A_2)$ und $L^{\omega}(A_3)$ mit $L^{\omega}(A_1) \cap L^{\omega}(A_2)$. \\
+        \begin{align*}
+            L(A_3) &= \left( a^*ba^*b \right)^* \cdot a^*ba^* \\
+            L^\omega(A_3) &= \left( a^*ba^*b \right)^* \cdot a^*ba^\omega
+        \end{align*}
+        \begin{equation}
+            L(A_3) = L(A_2) = L(A_1) \cup L(A_2)
+        \end{equation}
+        \begin{equation}
+            L^\omega(A_3) \subseteq L^\omega(A_1) \cup L^\omega(A_2)
+        \end{equation}
+        TODO
 
     \item Konstruieren Sie die initiale Zusammenhangskomponente des Produktautomaten 
-        $A_4$ im Sinne von Satz 1.21. \textit{Hinweis:} Sie benötigen 6 Zustände.
+        $A_4$ im Sinne von Satz 1.21. \textit{Hinweis:} Sie benötigen 6 Zustände. \\
+        TODO
 
     \item Bestimmen Sie $L(A_4)$ und $L^{\omega}(A_4)$. Vergleichen Sie $L(A_4)$ mit 
-        $L(A_1) \cap L(A_2)$ und $L^{\omega}(A_4)$ mit $L^{\omega}(A_1) \cap L^{\omega}(A_2)$.
+        $L(A_1) \cap L(A_2)$ und $L^{\omega}(A_4)$ mit $L^{\omega}(A_1) \cap L^{\omega}(A_2)$. \\
+        TODO
 
 \end{enumerate}
 \section*{Übungsaufgabe 3.4}
