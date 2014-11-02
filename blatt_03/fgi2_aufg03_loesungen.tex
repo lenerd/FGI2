@@ -1,0 +1,103 @@
+\documentclass[a4paper]{scrartcl}
+
+% font/encoding packages
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage[ngerman]{babel}
+
+% math
+\usepackage{amsmath, amssymb, amsfonts, amsthm, mathtools}
+\allowdisplaybreaks
+\newtheorem*{behaupt}{Behauptung}
+
+% tikz
+\usepackage{tikz}
+\usetikzlibrary{arrows,automata}
+
+% misc
+\usepackage{enumerate}
+\usepackage{geometry}
+\usepackage{listings}
+
+\geometry{top=2cm, bottom=2cm, right=2cm, left=2cm}
+\parindent0pt
+
+\title{FGI2}
+\subtitle{Aufgabenblatt 03 - Lösungen}
+\author{}
+\parindent0pt
+
+\date{}
+
+\begin{document}
+	\maketitle
+
+zu 3.3:
+\begin{enumerate}
+	\item
+	\begin{equation*}
+	\begin{split}
+		& L(A_1)= (a+b)^{*}\\
+		& L_(A_2)= a^{*}b(a+ba^{*}b)^{*}\\
+		& L^{\omega} (A_1)= (a+ba^{*}b)^{\omega}+(a+ba^{*}b)^{*}\cdot ba^{\omega}\\
+		& L^{\omega}(A_2)=a^{*}b(a+ba^{*}b)^{\omega}\\
+	\end{split}
+	\end{equation*}
+	\item Gemäß \textbf{Satz 1.8} und \textbf{Lemma 1.19} ergibt sich folgender Produktautomat: 
+\begin{equation*}
+	\begin{tikzpicture}[->,>=stealth',shorten >=1pt,auto,node distance=2.5cm,
+   semithick]
+		\tikzstyle{every state}=[fill=white,draw=black,text=black]
+	
+			\node[initial,state] 	(A)					{$q,s$};
+			\node[state, accepting]	(B)	[right of=A]	{$p,t$};
+			\node[state]			(C)	[below of=A]	{$r,t$};			
+	
+				\path 	(A) 	edge [loop above] 	node {a} (A)
+								edge 				node {b} (B)
+								edge [bend left]	node {b} (C)
+						(B)		edge [loop above]	node {a} (B)
+						(C)		edge [bend left]	node {b} (A)
+								edge [loop below]	node {a} (C);
+	\end{tikzpicture}
+\end{equation*}
+\item Die Sprachen für $A_3$ lauten $L(A_3)=(a+ba^{*}b)^{*}ba^{*}$ und $L^{\omega}(A_3)=(a+ba^{*}b)^{*}b(a)^{\omega}$. Es gilt $L(A_1)\cap L(A_2)= a^{*}b(a+ba^{*}b)^{*} = L(A_2)$. Es gilt weiter $L(A_1)\cap L(A_2) \supseteq L(A_3)$. Außerdem gilt $L^{\omega}(A_1)\cap L^{\omega}(A_2)=(a+ba^{*}b)^{*}b(a)^{\omega}=L^{\omega}(L_3)$.
+
+
+\newpage
+\item
+\begin{equation*}
+	\begin{tikzpicture}[->,>=stealth',shorten >=1pt,auto,node distance=2.5cm,
+   semithick]
+		\tikzstyle{every state}=[fill=white,draw=black,text=black]
+	
+			\node[initial,accepting, state] 	(A)		{$q,s,1$};
+			\node[state]	(B)	[right of=A]	{$r,t,2$};
+			\node[state]			(C)	[above of=B]	{$r,t,1$};
+			\node[state]			(D)	[below of=A]	{$p,t,2$};
+			\node[state, accepting]			(E)	[below of=D]	{$p,t,1$};
+			\node[state]			(F) [right of=D]	{$q,s,2$};		
+	
+				\path 	(A) 	edge 			 	node {a} (F)
+								edge [bend left]	node {b} (B)
+								edge 				node {b} (D)
+						(B)		edge [bend left]	node {b} (A)
+								edge 				node {a} (C)
+						(C)		edge				node {b} (A)
+								edge [loop right]	node {a} (C)
+						(D)		edge [bend left]	node {a} (E)
+						(E)		edge [bend left]	node {a} (D)
+						(F)		edge [loop right]	node {a} (F)
+								edge 				node {b} (D);
+	\end{tikzpicture}
+\end{equation*}
+\item
+Für $A_4$ ergeben sich die Sprachen $L(A_4)=(bb)^{*}(baa^{*}b)^{*}+(\epsilon + ba(aa)^{*}+aa^{*}ba(aa)^{*})$ und $L^{\omega}(A_4)=(bb)^{\omega}+(baa^{*}b)^{\omega}+ba^{\omega}+aa^{*}ba^{\omega}$. Damit gilt $L(A_1)\cap L(A_2)\neq L^(A_3)$, da $baab\in L(A_3)$, jedoch $baab\notin L(A_2)$ und damit $baab\notin L(A_1)\cap L(A_2)$.
+\end{enumerate}
+
+LENNART:
+$$ L^\omega (A_4) = (a^* b a^* b)^\omega + (a^* b a^* b)^* \cdot (a^*b) \cdot (aa)^\omega $$ 
+
+$$ L(A_4) = (a^* b a^* b)^* \cdot (a^* b a (aa)^* + \epsilon) $$ 
+\end{document}
