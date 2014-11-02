@@ -53,21 +53,89 @@ dass keine Bisimulationsrelation angegeben werden kann. Hinweis: Sie können sic
 Arbeit sparen, wenn sie beachten, dass folgende Symmetrie gilt: 
 $TS_1 \underline{\leftrightarrow} TS_2$ impliziert $TS_2 \underline{\leftrightarrow} TS_1$.
 \begin{description}
-    \item[$TS_1 \underline{\not\leftrightarrow} TS_2$:] \hfill\\ 
-        $(P_0, Q_0), (P_1, Q_1), (P_2, Q_1) \lightning$ \\
-        Nachdem die Automaten mit eine a-Kante in $(P_1, Q_1)$ bzw. $(P_2, Q_1)$ 
-        gewechselt haben, kann $P_1 \stackrel{c}{\rightarrow} P_3$ bzw. $P_2 \stackrel{b}{\rightarrow} P_3$
-        nicht ausgeführt werden, allerdings führt eine b- und eine c-Kante von 
-        $Q_1 \rightarrow Q_2$.
-    \item[$TS_1 \underline{\leftrightarrow} TS_3$:] \hfill\\
-        $(P_0, R_0), (P_1, R_1), (P_1, R_2), (P_2, R_1), (P_2, R_2) \lightning$ \\
-        $R_1$ und $R_2$ verfügen über b- und c-Kanten, $P_1$ und $P_2$ verfügen
-        nur jeweils über eine b- oder c-Kante.
-    \item[$TS_1 \underline{\leftrightarrow} TS_4$:] \hfill\\
-        $(P_0, S_0), (P_0, S_1), (P_1, S_2), (P_1, S_3), (P_2, S_2), (P_2, S_3), \lightning$ \\
-        $P_1$ verfügt über eine b-Kante, $S_3$ nicht. \\
-        $P_2$ verfügt über eine c-Kante, $S_2$ nicht. \\
-        $S_2$ verfügt über eine b-Kante, $P_2$ nicht. \\
-        $S_3$ verfügt über eine b-Kante, $P_1$ nicht. \\
+    \item $TS_1$, $TS_2$
+        \begin{itemize}
+            \item Aus Bedingung a) folgt $(P_0, Q_0) \in \mathcal{B}$.
+            \item Wenn $(P_0, Q_0) \in \mathcal{B}$, dann nach b) auch
+                $(P_1, Q_1), (P_2, Q_1) \in \mathcal{B}$.
+            \item Da $Q_1 \stackrel{c}{\rightarrow} Q_2$ müsste die Aktion $c$
+                auch in $P_1$ möglich sein. $\lightning$
+        \end{itemize}
+        $TS_1$ und $TS_2$ sind nicht bisimilar
+        ($TS_1  \underline{\not\leftrightarrow} TS_2$).
+
+    \item $TS_1$, $TS_3$
+        \begin{itemize}
+            \item Aus Bedingung a) folgt $(P_0, R_0) \in \mathcal{B}$.
+            \item Aus Bedingung b) folgt, dass $(P_1, R_1) \in \mathcal{B}$
+                oder $(P_1, R_2) \in \mathcal{B}$ gelten muss.
+                \begin{enumerate}
+                    \item $(P_1, R_1) \in \mathcal{B}$ \\
+                        Da $R_1 \stackrel{c}{\rightarrow} R_4$ müsste die Aktion
+                        $c$ auch in $P_1$ möglich sein. $\lightning$
+                    \item $(P_1, R_2) \in \mathcal{B}$ \\
+                        Da $R_2 \stackrel{c}{\rightarrow} R_4$ müsste die Aktion
+                        $c$ auch in $P_1$ möglich sein. $\lightning$
+                \end{enumerate}
+        \end{itemize}
+        $TS_1$ und $TS_3$ sind nicht bisimilar
+        ($TS_1  \underline{\not\leftrightarrow} TS_3$).
+
+    \item $TS_1$, $TS_4$
+        \begin{itemize}
+            \item Aus Bedingung a) folgt $(P_0,S_0), (P_0,S_1) \in \mathcal{B}$.
+            \item Wenn $(P_0,S_0), (P_0,S_1) \in \mathcal{B}$, dann nach b) auch
+                \\ $(P_1,S_2), (P_1,S_3), (P_2,S_2), (P_2,S_3) \in \mathcal{B}$.
+            \item Da $P_1 \stackrel{b}{\rightarrow} P_3$ müsste die Aktion $b$
+                auch in $S_3$ möglich sein. $\lightning$
+        \end{itemize}
+        $TS_1$ und $TS_4$ sind nicht bisimilar
+        ($TS_1  \underline{\not\leftrightarrow} TS_4$).
+
+    \item $TS_2$, $TS_3$
+        \begin{equation*}
+            \mathcal{B} = \left\{ (Q_0,R_0), (Q_1,R_1), (Q_1,R_2), (Q_2,R_3), (Q_2,R_4), (Q_3,R_0) \right\}
+        \end{equation*}
+        Alle drei Bedingungen sind erfüllt: $TS_2$ und $TS_3$ sind bisimilar
+        ($TS_2  \underline{\leftrightarrow} TS_3$).
+
+    \item $TS_2$, $TS_4$
+        \begin{itemize}
+            \item Aus Bedingung a) folgt $(Q_0,S_0), (Q_0,S_1) \in \mathcal{B}$.
+            \item Wenn $(Q_0,S_0), (Q_0,S_1) \in \mathcal{B}$, dann nach b) auch
+                $(Q_1,S_2), (Q_1,S_3) \in \mathcal{B}$.
+            \item Da $Q_1 \stackrel{b}{\rightarrow} Q_3$ müsste die Aktion $b$
+                auch in $S_3$ möglich sein. $\lightning$
+        \end{itemize}
+        $TS_2$ und $TS_4$ sind nicht bisimilar
+        ($TS_2  \underline{\not\leftrightarrow} TS_4$).
+
+    \item $TS_3$, $TS_4$
+        \begin{itemize}
+            \item Aus Bedingung a) folgt $(R_0,S_0), (R_0,S_1) \in \mathcal{B}$.
+            \item Wenn $(R_0,S_0), (R_0,S_1) \in \mathcal{B}$, dann nach b) auch
+                \\ $(R_1,S_2), (R_1,S_3), (R_2,S_2), (R_2,S_3) \in \mathcal{B}$.
+            \item Da $R_1 \stackrel{c}{\rightarrow} R_4$ müsste die Aktion $b$
+                auch in $S_2$ möglich sein. $\lightning$
+        \end{itemize}
+        $TS_3$ und $TS_4$ sind nicht bisimilar
+        ($TS_3  \underline{\not\leftrightarrow} TS_4$).
+
+    % \item[$TS_1 \underline{\not\leftrightarrow} TS_2$:] \hfill\\ 
+    %     $(P_0, Q_0), (P_1, Q_1), (P_2, Q_1) \lightning$ \\
+    %     Nachdem die Automaten mit eine a-Kante in $(P_1, Q_1)$ bzw. $(P_2, Q_1)$ 
+    %     gewechselt haben, kann $P_1 \stackrel{c}{\rightarrow} P_3$ bzw. $P_2 \stackrel{b}{\rightarrow} P_3$
+    %     nicht ausgeführt werden, allerdings führt eine b- und eine c-Kante von 
+    %     $Q_1 \rightarrow Q_2$.
+    % \item[$TS_1 \underline{\leftrightarrow} TS_3$:] \hfill\\
+    %     $(P_0, R_0), (P_1, R_1), (P_1, R_2), (P_2, R_1), (P_2, R_2) \lightning$ \\
+    %     $R_1$ und $R_2$ verfügen über b- und c-Kanten, $P_1$ und $P_2$ verfügen
+    %     nur jeweils über eine b- oder c-Kante.
+    % \item[$TS_1 \underline{\leftrightarrow} TS_4$:] \hfill\\
+    %     $(P_0, S_0), (P_0, S_1), (P_1, S_2), (P_1, S_3), (P_2, S_2), (P_2, S_3), \lightning$ \\
+    %     $P_1$ verfügt über eine b-Kante, $S_3$ nicht. \\
+    %     $P_2$ verfügt über eine c-Kante, $S_2$ nicht. \\
+    %     $S_2$ verfügt über eine b-Kante, $P_2$ nicht. \\
+    %     $S_3$ verfügt über eine b-Kante, $P_1$ nicht. \\
 \end{description}
 \end{document}
