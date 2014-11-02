@@ -34,16 +34,28 @@
 \section*{Übungsaufgabe 3.3} 
 Schnitt von $\omega$-Sprachen
 \begin{enumerate}[1.]
-    \item Bestimmen Sie $L(A_1)$, $L(A_2)$, $L^{\omega}(A_1)$ und $L^{\omega}(A_2)$.
+    \item Bestimmen Sie $L(A_1)$, $L(A_2)$, $L^{\omega}(A_1)$ und $L^{\omega}(A_2)$. \\
+        Darstellung der Sprachen in Form von Regulären Ausdrücken
+        \begin{align*}
+            L(A_1) &= \left( a + b \right)^* \\
+            L(A_2) &= a^*b \cdot \left( a + ba^*b \right)^* \\
+            L^\omega(A_1) &= \left( a + ba^*b \right)^\omega + \left( a + ba^*b \right)^* \cdot b a^\omega \\
+            L^\omega(A_2) &= a^* b \cdot \left( a + ba^*b \right)^\omega
+        \end{align*}
+
     \item Konstruieren Sie die initiale Zusammenhangskomponente des Produktautomaten 
         $A_3$ im Sinne von Satz 1.8 bzw. Lemma 1.19. \textit{Hinweis:} Sie benötigen 
         3 Zustände.
+
     \item Bestimmen Sie $L(A_3)$ und $L^{\omega}(A_3)$. Vergleichen Sie $L(A_3)$ mit 
         $L(A_1) \cap L(A_2)$ und $L^{\omega}(A_3)$ mit $L^{\omega}(A_1) \cap L^{\omega}(A_2)$.
+
     \item Konstruieren Sie die initiale Zusammenhangskomponente des Produktautomaten 
         $A_4$ im Sinne von Satz 1.21. \textit{Hinweis:} Sie benötigen 6 Zustände.
+
     \item Bestimmen Sie $L(A_4)$ und $L^{\omega}(A_4)$. Vergleichen Sie $L(A_4)$ mit 
         $L(A_1) \cap L(A_2)$ und $L^{\omega}(A_4)$ mit $L^{\omega}(A_1) \cap L^{\omega}(A_2)$.
+
 \end{enumerate}
 \section*{Übungsaufgabe 3.4}
 Prüfen Sie für alle Zweierkombinationen der folgenden vier Transitionssysteme, ob 
