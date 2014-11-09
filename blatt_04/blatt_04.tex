@@ -84,17 +84,69 @@
     6. & $\circ\circ\diamond(\lnot Hitze \land \lnot Teig)$           & $\bot$ & $\bot$ \\
 \end{tabular}
 \begin{enumerate}
-    \item
+    \item $f = \diamond\square(\lnot Teig \lor Hitze)$
+        \begin{description}
+            \item[$M_{kuchen}, \pi \models f$] \hfill \\
 
-    \item
+            \item[$M_{kuchen} \not\models f$] \hfill \\
 
-    \item
+        \end{description}
 
-    \item
+    \item $f = \square\diamond(\lnot Teig \lor Hitze)$
+        \begin{description}
+            \item[$M_{kuchen}, \pi \models f$] \hfill \\
 
-    \item
+            \item[$M_{kuchen} \models f$] \hfill \\
 
-    \item
+        \end{description}
+
+    \item $f = \square(Hitze ~\textbf{U}~ Backen)$
+        \begin{description}
+            \item[$M_{kuchen}, \pi \not\models f$] \hfill \\
+                Da schon in $1$ $\lnot Hitze$ gilt, müsste nach $f$ $Backen$
+                gelten.
+                Dies ist in $1$ nicht der Fall.
+
+            \item[$M_{kuchen} \not\models f$] \hfill \\
+                Da schon $M_{kuchen}, \pi \not\models f$, muss auch
+                $M_{kuchen} \not\models f$.
+
+        \end{description}
+
+    \item $f = \square\diamond(Backen \Rightarrow \circ\circ\lnot Backen)$
+        \begin{description}
+            \item[$M_{kuchen}, \pi \models f$] \hfill \\
+                % Die interessanten Zustände sind $6$ und $7$, da dort $Backen$
+                % erfüllt ist.
+                % Mit $\pi$ befindet sich $M_{kuchen}$ zwei Schritte nach dem
+                % Zustand $7$ bzw. $6$ in $3$ bzw. $2$.
+                Mit $\pi$ befindet sich $M_{kuchen}$ unendlich oft in den
+                Zuständen $2$ und $3$.
+                Da in diesen immer $\lnot Backen$ gilt, ist $f$ erfüllt.
+
+            \item[$M_{kuchen} \not\models f$] \hfill \\
+                Sei $\pi' = 1457(6)^\omega$ eine unendlicher Zustandspfad.
+                Da in $6$ $Backen$ gilt und $M_{kuchen}$ nie wieder aus $6$
+                heraus kommt, kann bei $\pi'$ nie zwei Schritte nach $Backen$
+                $\lnot Backen$ gelten.
+
+        \end{description}
+
+    \item $f = \square((Hitze \land Teig) \Rightarrow \diamond\lnot Teig)$
+        \begin{description}
+            \item[$M_{kuchen}, \pi \models f$] \hfill \\
+
+            \item[$M_{kuchen} \models f$] \hfill \\
+
+        \end{description}
+
+    \item $f = \circ\circ\diamond(\lnot Hitze \land \lnot Teig)$
+        \begin{description}
+            \item[$M_{kuchen}, \pi \not\models f$] \hfill \\
+
+            \item[$M_{kuchen} \not\models f$] \hfill \\
+
+        \end{description}
 
 \end{enumerate}
 
