@@ -118,10 +118,6 @@ Begründungen
     \item $f = \square\diamond(Backen \Rightarrow \circ\circ\lnot Backen)$
         \begin{description}
             \item[$M_{kuchen}, \pi \models f$] \hfill \\
-                % Die interessanten Zustände sind $6$ und $7$, da dort $Backen$
-                % erfüllt ist.
-                % Mit $\pi$ befindet sich $M_{kuchen}$ zwei Schritte nach dem
-                % Zustand $7$ bzw. $6$ in $3$ bzw. $2$.
                 Mit $\pi$ befindet sich $M_{kuchen}$ unendlich oft in den
                 Zuständen $2$ und $3$.
                 Da in diesen immer $\lnot Backen$ gilt, ist $f$ erfüllt.
@@ -137,8 +133,15 @@ Begründungen
     \item $f = \square((Hitze \land Teig) \Rightarrow \diamond\lnot Teig)$
         \begin{description}
             \item[$M_{kuchen}, \pi \models f$] \hfill \\
+                Siehe unten.
 
             \item[$M_{kuchen} \models f$] \hfill \\
+                Es muss gezeigt werden, dass alle Pfade gilt: Nach einem
+                Zustand, in dem $Hitze \land Teig$ gilt, muss irgendwann ein
+                Zustand kommen, in dem $\lnot Teig$ gilt.
+                $Hitze \land Teig$ gilt ausschließlich in Zustand $5$.
+                Aus $5$ führt die einzige Kante nach $7$.
+                Da in $7$ $\lnot Teig$ gilt, ist $f$ erfüllt.
 
         \end{description}
 
