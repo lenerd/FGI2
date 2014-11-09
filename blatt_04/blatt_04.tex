@@ -77,7 +77,31 @@
         \end{behaupt}
 
         \begin{proof}
-            TODO
+            Es muss gezeigt werden, dass der Inhalt der Klammer unendlich oft in
+            jeden Pfad $\pi$ durch $M_{kuchen}$ gelten muss.
+            In Zuständen, in denen $\lnot (Teig \lor \lnot Hitze)$ gilt, ist
+            die Implikation schon erfüllt.
+            Daher müssten insbesondere die Zustände betrachtet werden, in denen
+            die linke Seite der Implikation wahr wird.
+            Diese sind in der Menge
+            $A = Sat(Teig \lor \lnot Hitze) = \{ 1, 4, 5 \}$ enthalten.
+            Damit die Implikation in diesen Zuständen war wird, muss für diese
+            oder für einen (nicht notwendigerweise direkten) Folgezustand
+            $\lnot Teig$ gelten.
+            Es muss in jedem Pfad $\pi$ nach einem Zustand $s_a \in A$ ein
+            Zustand $s_b \in B = Sat(\lnot Teig) = \{ 1, 2, 3, 6, 7 \}$
+            enthalten sein.
+            \begin{description}
+                \item[$s_a = 1$] \hfill \\
+                    $1$ ist selbst schon in $B$ enthalten.
+
+                \item[$s_a = 4$] \hfill \\
+                    Aus $4$ führt die einzige Kante nach $5$ (s.\,u.).
+
+                \item[$s_a = 5$] \hfill \\
+                    Aus $5$ führt die einzige Kante nach $7 \in B$.
+            \end{description}
+            Somit gilt $M_{kuchen} \models f$.
         \end{proof}
 
     \item
