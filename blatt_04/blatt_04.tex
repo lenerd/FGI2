@@ -83,6 +83,8 @@
     5. & $\square((Hitze \land Teig) \Rightarrow \diamond\lnot Teig)$ & $\top$ & $\top$ \\
     6. & $\circ\circ\diamond(\lnot Hitze \land \lnot Teig)$           & $\bot$ & $\bot$ \\
 \end{tabular}
+
+Begründungen
 \begin{enumerate}
     \item $f = \diamond\square(\lnot Teig \lor Hitze)$
         \begin{description}
@@ -143,8 +145,15 @@
     \item $f = \circ\circ\diamond(\lnot Hitze \land \lnot Teig)$
         \begin{description}
             \item[$M_{kuchen}, \pi \not\models f$] \hfill \\
+                Ab dem dritten Schritt, müsste irgendwann einmal
+                $\lnot Hitze \land \lnot Teig$ gelten.
+                Dies ist nur in Zustand $1$ der Fall.
+                Da dieser in $\pi$ nur an den ersten beiden Stellen vorkommt,
+                ist $f$ nicht erfüllt.
 
             \item[$M_{kuchen} \not\models f$] \hfill \\
+                Da schon $M_{kuchen}, \pi \not\models f$, muss auch
+                $M_{kuchen} \not\models f$.
 
         \end{description}
 
