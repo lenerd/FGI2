@@ -70,5 +70,18 @@
 \end{enumerate}
 
 \section*{Übungsaufgabe 4.4}
+\begin{equation*}
+    \pi = 114576(32)^\omega
+\end{equation*}
+
+\begin{tabular}{l|c|c}
+    $f$ & $M_{kuchen} \models  f$ & $M_{kuchen}, \pi \models  f$ \\ \hline
+    $\diamond\square(\lnot Teig \lor Hitze)$                     & $\bot$ & $\top$ \\
+    $\square\diamond(\lnot Teig \lor Hitze)$                     & $\top$ & $\top$ \\
+    $\square(Hitze ~\textbf{U}~ Backen)$                         & $\bot$ & $\bot$ \\
+    $\square\diamond(Backen \Rightarrow \circ\circ\lnot Backen)$ & $\bot$ & $\top$ \\
+    $\square((Hitze \land Teig) \Rightarrow \diamond\lnot Teig)$ & $\top$ & $\top$ \\
+    $\circ\circ\diamond(\lnot Hitze \land \lnot Teig)$           & $\bot$ & $\bot$ \\
+\end{tabular}
 
 \end{document}
