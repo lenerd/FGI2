@@ -102,8 +102,15 @@ Begründungen
     \item $f = \square\diamond(\lnot Teig \lor Hitze)$
         \begin{description}
             \item[$M_{kuchen}, \pi \models f$] \hfill \\
+                Sobald $M_{kuchen}$ in $\pi$ den Zustand $4$ verlassen hat,
+                gilt immer $\lnot Teig \lor Hitze$.
 
             \item[$M_{kuchen} \models f$] \hfill \\
+                Da Zustand $4$ der einzige Zustand ist, indem
+                $\lnot Teig \lor Hitze$ nicht gilt, muss gezeigt werden, dass
+                jeder Zustandspfad $4$ wieder verlässt.
+                Da $4$ keine Schleife, sondern nur eine Kante nach $5$ besitzt,
+                gilt $f$.
 
         \end{description}
 
