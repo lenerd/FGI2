@@ -17,6 +17,8 @@
 
 % misc
 \usepackage{enumerate}
+\usepackage[section]{placeins}
+\usepackage{subcaption}
 
 \title{Formale Grundlagen der Informatik II}
 \subtitle{Aufgabenblatt 5}
@@ -37,13 +39,25 @@
 
     \item
         \begin{enumerate}[(a)]
-            \item
+            \item Sei $\alpha_1 = \textbf{EX}(s \lor g)$.
+                \begin{equation}
+                    Sat(\alpha_1) = \left\{  \right\}
+                \end{equation}
 
             \item
+                \begin{equation}
+                    Sat(\textbf{AG}\alpha_1) = \left\{  \right\}
+                \end{equation}
 
             \item
+                \begin{equation}
+                    Sat(\textbf{EG} \lnot b) = \left\{  \right\}
+                \end{equation}
 
             \item
+                \begin{equation}
+                    Sat(\textbf{AX} \lnot g) = \left\{  \right\}
+                \end{equation}
 
         \end{enumerate}
 
@@ -76,12 +90,53 @@
 \section*{Übungsaufgabe 5.4}
 \begin{enumerate}
     \item
+        \begin{align}
+            \begin{split}
+                \beta_1 &= \textbf{AGEX} \lnot s \\
+                &\equiv \lnot \textbf{EF} (\lnot \textbf{EX} \lnot s) \\
+                &\equiv \lnot \textbf{E} (true \textbf{U} (\lnot \textbf{EX} \lnot s)) = \beta_1'
+            \end{split} \\
+            \begin{split}
+                \beta_2 &= \textbf{EXAG} \lnot s \\
+                &\equiv \textbf{EX} (\lnot \textbf{EF} s) \\
+                &\equiv \textbf{EX} (\lnot \textbf{E} (true \textbf{U} s)) = \beta_2'
+            \end{split}
+        \end{align}
+        
+
+    \item \hfill \\
+        \begin{table}[h]
+            \begin{subtable}{0.5\textwidth}
+                \begin{tabular}{r|ccc}
+                    Teilformel & $s_0$ & $s_1$ & $s_2$ \\ \hline
+                    $s$ & $-$ & $+$ & $-$ \\
+                    $\lnot s$ & $+$ & $-$ & $+$ \\
+                    $\textbf{EX} \lnot s$ & $+$ & $+$ & $+$ \\
+                    $\lnot \textbf{EX} \lnot s$ & $-$ & $-$ & $-$ \\
+                    $\textbf{E} (true \textbf{U} (\lnot \textbf{EX} \lnot s))$ & $-$ & $-$ & $-$ \\
+                    $\lnot \textbf{E} (true \textbf{U} (\lnot \textbf{EX} \lnot s))$ & $+$ & $+$ & $+$ \\
+                \end{tabular}
+            \end{subtable}
+            \begin{subtable}{0.5\textwidth}
+                \begin{tabular}{r|ccc}
+                    Teilformel & $s_0$ & $s_1$ & $s_2$ \\ \hline
+                    $s$ & $-$ & $+$ & $-$ \\
+                    $\textbf{E} (true \textbf{U} s)$ & $+$ & $+$ & $-$ \\
+                    $\lnot \textbf{E} (true \textbf{U} s)$ & $-$ & $-$ & $+$ \\
+                    $\textbf{EX}(\lnot \textbf{E} (true \textbf{U} s))$ & $-$ & $+$ & $+$ \\
+                \end{tabular}
+            \end{subtable}
+        \end{table}
 
     \item
+        \begin{itemize}
+            \item Da $\beta_1$ für den einzigen Startzustand $s_0$ von $M_{AKW}$
+                gilt, folgt $M_{AKW} \models \beta_1$.
+            \item Da $\beta_2$ nicht für den Startzustand $s_0$ von $M_{AKW}$
+                gilt, folgt $M_{AKW} \not\models \beta_2$.
+        \end{itemize}
 
-    \item
-
-    \item
+    \item Interessant.
 
 \end{enumerate}
 
