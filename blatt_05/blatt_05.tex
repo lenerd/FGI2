@@ -118,7 +118,34 @@
 
     \item
         \begin{enumerate}[(a)]
-            \item TODO
+            \item Für $\textbf{AXAG}a$ und $\textbf{AGAX}a$ gilt jeweils folgender Abwicklungsbaum, mit $p\in\mathcal{P}(AP)$ beliebig: \\
+                \begin{center}
+                    \begin{tikzpicture}[->,level/.style={sibling distance=70mm/#1}]
+                        \node [state,draw] (start) {p}
+                            child {node [state,draw] {a}
+                                child {node [state,draw] {a}
+                                    child{node [state,draw=white] { }}
+                                    child{node [state,draw=white] { }}
+                                    }
+                                child {node [state,draw] {a}
+                                    child{node [state,draw=white] { }}
+                                    child{node [state,draw=white] { }}
+                                    } 
+                                  }
+                            child {node [state,draw] {a}
+                                child {node [state,draw] {a}
+                                    child{node [state,draw=white] { }}
+                                    child{node [state,draw=white] { }}
+                                    }
+                                child {node [state,draw] {a}
+                                    child{node [state,draw=white] { }}
+                                    child{node [state,draw=white] { }}
+                                    }
+                                  } (A);
+                          \node (a) [above of=start] {};
+                          \draw (a) -> (start);
+                    \end{tikzpicture}
+                \end{center}
                 
             \item
                 \begin{itemize}
