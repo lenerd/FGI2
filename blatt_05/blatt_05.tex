@@ -107,18 +107,31 @@
                 werden kann.
                 $\beta_1$ trifft zu, da $s_0$ der einzige Zustand ist, in dem
                 $\neg(s\vee g)$, jedoch $s_0\in Sat(\textbf{AGEX}(s\vee g))$.
-		\item $M_{AKW}\models\textbf{EG}\neg b$ \\
-            Die Aussage für $\beta_2$ ist, dass es einen Pfad gibt, auf dem
-            immer $\neg b$ gilt.
-            Dies trifft gem. 5.3.2 nicht zu, da $s_0$ Startzustand ist und
-            $s_0\notin Sat(\textbf{EG}\neg b)$ gilt.
+
+            \item $M_{AKW}\models\textbf{EG}\neg b$ \\
+                Die Aussage für $\beta_2$ ist, dass es einen Pfad gibt, auf dem
+                immer $\neg b$ gilt.
+                Dies trifft gem. 5.3.2 nicht zu, da $s_0$ Startzustand ist und
+                $s_0\notin Sat(\textbf{EG}\neg b)$ gilt.
+
         \end{enumerate}
 
     \item
         \begin{enumerate}[(a)]
-            \item
+            \item TODO
                 
             \item
+                \begin{itemize}
+                    \item $M_{AKW} \models \textbf{EGEX}s$ \\
+                        Sei $\pi = s_0^\omega$.
+                        Es gäbe in jedem Schritt die Möglichkeit, nach $s_1$
+                        abzubiegen.
+
+                    \item $M_{AKW} \not\models \textbf{EXEG}s$ \\
+                        Es gibt keinen Pfad, der ab dem zweiten Schritt immer
+                        in $s_1$ bleibt.
+
+                \end{itemize}
                 
         \end{enumerate}
 
