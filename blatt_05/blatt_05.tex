@@ -99,12 +99,19 @@
 
         \end{enumerate}
 
-    \item
+    \item Sei $\beta_1=\textbf{AGEX}(s\vee g)$ und $\beta_2=\textbf{EG}\neg b$
         \begin{enumerate}[(a)]
-            \item
-                
-            \item
-                
+            \item $M_{AKW}\models\textbf{AGEX}(s\vee g)$ \\
+                $\beta_1$ sagt aus: Auf allen Pfaden gilt, dass immer ein Pfade
+                existiert, mit dem im nächsten Schritt $s$ oder $g$ erreicht
+                werden kann.
+                $\beta_1$ trifft zu, da $s_0$ der einzige Zustand ist, in dem
+                $\neg(s\vee g)$, jedoch $s_0\in Sat(\textbf{AGEX}(s\vee g))$.
+		\item $M_{AKW}\models\textbf{EG}\neg b$ \\
+            Die Aussage für $\beta_2$ ist, dass es einen Pfad gibt, auf dem
+            immer $\neg b$ gilt.
+            Dies trifft gem. 5.3.2 nicht zu, da $s_0$ Startzustand ist und
+            $s_0\notin Sat(\textbf{EG}\neg b)$ gilt.
         \end{enumerate}
 
     \item
