@@ -137,7 +137,23 @@
 
     \item
         \begin{enumerate}[(a)]
-            \item
+            \item Sei $M$ eine Kripke-Struktur.
+                $M \models f$, wenn $f$ für alle Zustandsfolgen gilt, die in
+                einem Startzustand von $M$ beginnen.
+
+                $\textbf{XG}b$ gilt für eine Folge, wenn $b$ ab dem zweiten
+                Zustand immer gilt. \\
+                $M \models \textbf{XG}b$ gilt also, wenn $b$ ab dem zweiten
+                Zustand aller Folgen gilt, die in einem Startzustand von $M$
+                beginnen.
+
+                $\textbf{AXAG}b$ gilt, wenn ab dem zweiten Zustand, auf allen
+                möglichen Pfaden immer $b$ gilt. \\
+                $M \models \textbf{AXAG}b$ gilt also, wenn $b$ ab dem zweiten
+                Zustand aller Folgen gilt, die in einem Startzustand von $M$
+                beginnen.
+
+                Offensichtlich handelt es sich um die gleiche Bedingung.
                 
             \item
                 \begin{itemize}
