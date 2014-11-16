@@ -35,7 +35,45 @@
 
 \section*{Übungsaufgabe 5.3} 
 \begin{enumerate}
-    \item TODO: Graph
+    \item Abwicklungsgraph von $M_{AKW}$ \\
+        \begin{center}
+            \begin{tikzpicture}[->,>=stealth',shorten >=1pt,auto,node distance=1.8cm,
+	   semithick]
+                \tikzstyle{every state}=[fill=white,draw=black,text=black]
+		
+				\node[initial, state] 	(A)						{$\{b\}$};
+				\node[state]			(B)	[below right of=A]	{$\{b\}$};
+				\node[state]			(C)	[below right of=B]	{$\{b\}$};
+				\node[state]			(D)	[below right of=C]	{$\{b\}$};
+				\node[state][draw=white,text=white]	(E)	[below right of=D]	{$\{b\}$};
+				\node[state]			(F) [below left of=A]		{$\{s\}$};
+				\node[state]			(G)	[below left of=B]		{$\{s\}$};
+				\node[state]			(H)	[below left of=C]		{$\{s\}$};	
+				\node[state][draw=white,text=white]	(J)	[below left of=D]		{$\{s\}$};	
+				\node[state]			(K)	[below left of=F]		{$\{g\}$};
+				\node[state]			(L)	[below left of=K]		{$\{g\}$};
+				\node[state]			(M)	[below left of=G]		{$\{g\}$};
+				\node[state][draw=white,text=white]	(N)	[below left of=M]		{$\{g\}$};
+				\node[state][draw=white,text=white]	(O)	[below left of=H]		{$\{g\}$};
+				\node[state][draw=white,text=white]	(P)	[below left of=L]		{$\{g\}$};
+
+					\path 	(A) 	edge 			 	node { } (B)
+									edge				node { } (F)
+							(B)		edge				node { } (C)
+									edge				node { } (G)
+							(C)		edge				node { } (D)
+									edge				node { } (H)
+							(D)		edge				node { } (J)
+									edge				node { } (E)
+							(F)		edge				node { } (K)
+							(K)		edge				node { } (L)
+							(L)		edge				node { } (P)
+							(F)		edge				node { } (K)
+							(G)		edge				node { } (M)
+							(M)		edge				node { } (N)
+							(H)		edge				node { } (O);
+            \end{tikzpicture}
+        \end{center}
 
     \item Sei $\alpha_1 = \textbf{EX}(s \lor g)$.
         \begin{enumerate}[(a)]
