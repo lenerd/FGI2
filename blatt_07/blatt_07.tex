@@ -14,6 +14,7 @@
 % tikz
 \usepackage{tikz}
 \usetikzlibrary{arrows,automata}
+\usetikzlibrary{positioning}
 
 % misc
 \usepackage{enumerate}
@@ -82,11 +83,123 @@
 
 \section*{Übungsaufgabe 7.4} 
 \begin{enumerate}
-    \item
+    \item \hfill \\
+        \begin{figure}[h]
+            \centering
+            \begin{tikzpicture}[
+                ->,
+                >=stealth',
+                semithick,
+                auto,
+                node distance=1.5cm,
+            ]
+                \node (0) {};
+                \node (a) [below=0.5cm of 0] {$(0,0,2,4)^T$};
+                \node (b) [below= of a]      {$(1,0,1,3)^T$};
+                \node (c) [below= of b]      {$(2,0,0,2)^T$};
+                \node (d) [left= of b]       {$(0,1,1,2)^T$};
+                \node (e) [below= of d]      {$(1,1,0,1)^T$};
+
+                \draw (0) to node {   } (a);
+                \draw (a) to node {$v$} (b);
+                \draw (b) to node {$v$} (c);
+                \draw (d) to node {$v$} (e);
+                \draw (d) to node {$t$} (b);
+                \draw (e) to node {$t$} (c);
+                \draw (c) to node {$u$} (d);
+            \end{tikzpicture}
+            \caption{Erreichbarkeitsgraph für $N_{7.4a}$}
+        \end{figure}
+        \begin{figure}[h]
+            \centering
+            \begin{tikzpicture}[
+                ->,
+                >=stealth',
+                semithick,
+                auto,
+                node distance=1.5cm,
+            ]
+                \node (0) {};
+                \node (aa) [below=0.5cm of 0]  {$(0,0,1,4)^T$};
+                \node (ab) [below= of aa]      {$(3,0,0,3)^T$};
+                \node (ac) [below= of ab]      {$(1,2,1,3)^T$};
+                \node (ad) [below= of ac]      {\underline{$(3,0,1,4)^T$}};
+                \node (ae) [below= of ad]      {$(1,2,2,4)^T$};
+                \node (af) [below= of ae]      {$(3,0,2,5)^T$};
+                \node (ag) [below= of af]      {$(1,2,3,5)^T$};
+                \node (a)  [below=0.5cm of ag] {};
+
+                \node (bc) [right= of ac]      {$(4,2,0,2)^T$};
+                \node (bd) [below= of bc]      {$(6,0,0,3)^T$};
+                \node (be) [below= of bd]      {$(4,2,1,3)^T$};
+                \node (bf) [below= of be]      {$(6,0,1,4)^T$};
+                \node (bg) [below= of bf]      {$(4,2,2,4)^T$};
+                \node (b)  [below=0.5cm of bg] {};
+
+                \node (ce) [right= of be]      {$(7,2,0,2)^T$};
+                \node (cf) [below= of ce]      {$(9,0,0,3)^T$};
+                \node (cg) [below= of cf]      {$(7,2,1,3)^T$};
+                \node (c)  [below=0.5cm of cg] {};
+
+                \node (dg) [right= of cg]      {$(10,2,0,2)^T$};
+                \node (d)  [below=0.5cm of dg] {};
+
+                % vertical edges
+                \draw (0)  to node {   } (aa);
+                \draw (aa) to node {$v$} (ab);
+                \draw (ab) to node {$u$} (ac);
+                \draw (ac) to node {$t$} (ad);
+                \draw (ad) to node {$u$} (ae);
+                \draw (ae) to node {$t$} (af);
+                \draw (af) to node {$u$} (ag);
+                \draw (ag) to node {$t$} (a);
+
+                \draw (bc) to node {$t$} (bd);
+                \draw (bd) to node {$u$} (be);
+                \draw (be) to node {$t$} (bf);
+                \draw (bf) to node {$u$} (bg);
+                \draw (bg) to node {$t$} (b);
+
+                \draw (ce) to node {$t$} (cf);
+                \draw (cf) to node {$u$} (cg);
+                \draw (cg) to node {$t$} (c);
+
+                \draw (dg) to node {$t$} (d);
+
+                % horizontal edges
+                \draw (ac) to node {$v$} (bc);
+                \draw (ad) to node {$v$} (bd);
+                \draw (ae) to node {$v$} (be);
+                \draw (af) to node {$v$} (bf);
+                \draw (ag) to node {$v$} (bg);
+
+                \draw (be) to node {$v$} (ce);
+                \draw (bf) to node {$v$} (cf);
+                \draw (bg) to node {$v$} (cg);
+
+                \draw (cg) to node {$v$} (dg);
+
+            \end{tikzpicture}
+            \caption{Erreichbarkeitsgraph für $N_{7.4b}$}
+        \end{figure}
+
 
     \item
+        $N_{7.4a}$ ist
+        \begin{itemize}
+            \item beschränkt
+            \item $k$-beschränkt für $k \in \{4,5\}$
+            \item verklemmungsfrei
+            \item lebendig
+            \item $\lnot$ reversibel
+            \item strukturell lebendig
+        \end{itemize}
 
-    \item
+        $N_{7.4b}$ ist $\lnot$ strukturell beschränkt.
+
+        TODO: Begründungen
+
+    \item TODO
         \begin{enumerate}[(a)]
             \item
 
