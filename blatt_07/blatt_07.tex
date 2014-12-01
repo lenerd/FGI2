@@ -7,7 +7,7 @@
 \usepackage[ngerman]{babel}
 
 % math
-\usepackage{amsmath, amssymb, amsfonts, amsthm, mathtools, MnSymbol}
+\usepackage{amsmath, amssymb, amsfonts, amsthm, mathtools}
 \allowdisplaybreaks
 \newtheorem*{behaupt}{Behauptung}
 
@@ -22,6 +22,9 @@
 \usepackage{enumerate}
 \usepackage[section]{placeins}
 \usepackage{subcaption}
+
+% macros
+\newcommand{\gdw}{\Leftrightarrow}
 
 \title{Formale Grundlagen der Informatik II}
 \subtitle{Aufgabenblatt 7}
@@ -204,7 +207,15 @@
         $N_{7.4b}$ ist $\lnot$ strukturell beschränkt, da $(N_{7.4b}, m_{0b})$
         nicht beschränkt ist.
 
-    \item TODO
+    \item
+        Gegeben sei ein P/T-Netz ohne Senken
+        ($\forall p \in P : p^\bullet \cap T \neq \emptyset$), für das gilt:
+        \begin{equation}
+            \forall t \in T : \sum_{p \in P} \widetilde{W}(t, p)
+            = 2 \cdot \sum_{p \in P} \widetilde{W}(p, t) - 1
+            \label{eq:def}
+        \end{equation}
+        
         \begin{enumerate}[(a)]
             \item
                 Abbildung \ref{fig:beispiel} zeigt ein Netz, welches die
@@ -225,6 +236,66 @@
                 \end{figure}
 
             \item
+                \begin{behaupt}
+                    In einem P/T-Netz, welches die Definition \eqref{eq:def}
+                    erfüllt, wird die Summe nachfolgender Markierungen nie
+                    kleiner.
+                    \begin{equation}
+                        \forall m, m' \in R(N, m_0) \emph{ mit } m \stackrel{w}{\to} m'
+                        : |m'| \geq |m|
+                    \end{equation}
+                    \begin{proof}[Beweis durch vollständige Induktion] \hfill \\
+                        \textbf{Induktionsanfang} \\
+                        Sei $|w| = 0 \gdw w = \varepsilon$ und $m, m' \in R(N, m_0)$.
+                        \begin{equation}
+                            m \stackrel{w}{\to} m' \gdw m = m_0 \Rightarrow |m| = |m'|
+                        \end{equation}
+
+                        Gelte die Behauptung für eine Transitionsfolge der
+                        festen Länge $n \in \mathbb{N}$.
+
+                        \textbf{Induktionsschritt} \\
+                        Sei $|w| = n + 1$ mit $w = \sigma t$ und $|t| = 1$.
+                        Für $m, m', m'' \in R(N, m_0)$ gelte
+                        $m \stackrel{\sigma}{\to} m'' \stackrel{t}{\to} m'$
+
+                        Nach Induktionsannahme gilt $|m''| \geq |m|$.
+
+                        Damit $|m'| \geq |m''|$ gilt, müssen nach $t$ auf jedem
+                        Platz mindestens genauso viele Marken liegen, wie
+                        zuvor.
+
+                        Seien $a, e$ wie folgt definiert.
+                        \begin{align}
+                            a &= \sum_{p \in P} \widetilde{W}(t, p)
+                            \qquad \text{ (von $t$ ausgehende Kantengewichte)} \\
+                            e &= \sum_{p \in P} \widetilde{W}(p, t)
+                            \qquad \text{ (eingehende Kantengewichte)}
+                        \end{align}
+                        
+                        Wenn $a \geq e$ gilt, dann sind nach der Ausführung
+                        der Transition $a - e$ mehr Marken auf den
+                        Plätzen vorhanden.
+
+                        Aus der Definition \eqref{eq:def} kennen wir den
+                        Zusammenhang von $a$ und $e$.
+                        \begin{equation}
+                            a = 2e-1
+                        \end{equation}
+
+                        Da die Kantengewichte aus natürlichen Zahlen bestehen,
+                        muss also gelten
+                        \begin{equation}
+                            \forall e \in \mathbb{N} \backslash \{0\} : 2e-1 \geq e
+                        \end{equation}
+
+                        Offensichtlich ist dies der Fall, auf einen Beweis
+                        verzichten wir an dieser Stelle.
+                        
+                        Es ist gezeigt, dass $|m'| \geq |m''|$ und damit die
+                        Behauptung gelten.
+                    \end{proof}
+                \end{behaupt}
 
         \end{enumerate}
 
