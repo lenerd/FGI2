@@ -13,7 +13,9 @@
 
 % tikz
 \usepackage{tikz}
-\usetikzlibrary{arrows,automata}
+\usetikzlibrary{arrows}
+\usetikzlibrary{automata}
+\usetikzlibrary{petri}
 \usetikzlibrary{positioning}
 
 % misc
@@ -205,6 +207,22 @@
     \item TODO
         \begin{enumerate}[(a)]
             \item
+                Abbildung \ref{fig:beispiel} zeigt ein Netz, welches die
+                Definition erfüllt und sowohl lebendig als auch beschränkt ist.
+                \begin{figure}[h]
+                    \centering
+                    \begin{tikzpicture}
+                        \tikzstyle{place}=[circle, thick, draw, minimum size=6mm]
+                        \tikzstyle{transition}=[rectangle, thick, draw, minimum size=4mm]
+
+                        \node [place, tokens=1] (p1) [label=above:$p_1$] {};
+                        \node [transition] (t1) [left= of p1, label=above:$t_1$] {} 
+                            edge [pre, bend right] (p1)
+                            edge [post, bend left] (p1);
+                    \end{tikzpicture}
+                    \caption{Beispielnetz}
+                    \label{fig:beispiel}
+                \end{figure}
 
             \item
 
