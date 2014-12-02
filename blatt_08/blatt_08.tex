@@ -41,7 +41,55 @@
 
 \section*{Übungsaufgabe 8.3} 
 \begin{enumerate}
-    \item
+    \item foo
+        \begin{figure}[h]
+            \centering
+            \begin{tikzpicture}
+                \tikzstyle{place}=[circle, thick, draw, minimum size=6mm]
+                \tikzstyle{transition}=[rectangle, thick, draw, minimum size=4mm]
+
+                \node [place] (b1) [label=below:$p_1|b_1$,] {};
+                \node [transition] (ta1) [right= of b1] {$a$};
+                \node [place] (b3) [label=below:$p_3|b_3$, above right= of ta1] {};
+                \node [place] (b2) [label=above:$p_2|b_2$, above= of b3] {};
+                \node [place] (b4) [label=above:$p_3|b_4$, below right= of ta1] {};
+                \node [place] (b5) [label=below:$p_4|b_5$, below= of b4] {};
+
+                \node [transition] (tb1) [right= of b3] {$b$};
+                \node [transition] (tc1) [right= of b4] {$c$};
+
+                \node [place] (b6) [label=below:$p_5|b_6$, right= of tb1] {};
+                \node [place] (b7) [label=below:$p_5|b_7$, right= of tc1] {};
+
+                \node [transition] (td1) [right= of b6] {$d$};
+                \node [transition] (td2) [right= of b7] {$d$};
+
+                \node [place] (b8) [label=below:$p_6|b_8$, right= of td1] {};
+                \node [place] (b9) [label=below:$p_6|b_9$, right= of td2] {};
+
+                \draw [pre]  (ta1) to (b1);
+                \draw [post] (ta1) to (b2);
+                \draw [post] (ta1) to (b3);
+                \draw [post] (ta1) to (b4);
+                \draw [post] (ta1) to (b5);
+
+                \draw [pre]  (tb1) to (b2);
+                \draw [pre]  (tb1) to (b3);
+                \draw [post] (tb1) to (b6);
+
+                \draw [pre]  (tc1) to (b4);
+                \draw [pre]  (tc1) to (b5);
+                \draw [post] (tc1) to (b7);
+
+                \draw [pre]  (td1) to (b6);
+                \draw [post] (td1) to (b8);
+
+                \draw [pre]  (td2) to (b7);
+                \draw [post] (td2) to (b9);
+            \end{tikzpicture}
+            \caption{Prozesse von $N_{8.3}$}
+            \label{fig:prozesse}
+        \end{figure}
 
     \item
 
