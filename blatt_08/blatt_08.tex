@@ -41,7 +41,10 @@
 
 \section*{Übungsaufgabe 8.3} 
 \begin{enumerate}
-    \item foo
+    \item Abbildung \ref{fig:prozesse} zeigt den größtmöglichen Prozess.
+        Farbige Abschnitte können inklusive aller rechts an ihnen
+        anschließenden Abschnitte (transitiv) weggelassen werden.
+        Der Rest ist wiederum ein möglicher Prozess.
         \begin{figure}[h]
             \centering
             \begin{tikzpicture}
@@ -92,9 +95,171 @@
             \label{fig:prozesse}
         \end{figure}
 
-    \item
+    \item $R_{8.3} = (B, E, F_R)$
+        \begin{figure}[h]
+            \centering
+            \begin{tikzpicture}[
+                    auto,
+                    scale=1.5,
+                ]
+                \tikzstyle{edge}=[->,>=stealth']
+                \tikzstyle{place}=[circle, thick, draw, minimum size=6mm]
+                \tikzstyle{transition}=[rectangle, thick, draw, minimum size=4mm]
+
+                \node [place] (b1) at (0,2) [label=below:$b_1$] {};
+                \node [place] (b2) at (0,0) [label=below:$b_2$] {};
+                \node [transition] (a) at (1,2) {$a$};
+                \node [place] (b3) at (2,2) [label=below:$b_3$] {};
+                \node [place] (b4) at (2,1) [label=below:$b_4$] {};
+                \node [transition] (c) at (3,0) {$c$};
+                \node [place] (b5) at (4,0) [label=below:$b_5$] {};
+
+                \draw [edge] (b1) to (a);
+                \draw [edge] (a)  to (b3);
+                \draw [edge] (a)  to (b4);
+
+                \draw [edge] (b2) to (c);
+                \draw [edge] (b4) to (c);
+                \draw [edge] (c)  to (b5);
+            \end{tikzpicture}
+            \caption{$\lessdot \subseteq (B \cup E)^2$}
+            \label{fig:rel1}
+        \end{figure}
+
+        \begin{figure}[h]
+            \centering
+            \begin{tikzpicture}[
+                    auto,
+                    scale=1.5,
+                ]
+                \tikzstyle{edge}=[->,>=stealth']
+                \tikzstyle{place}=[circle, thick, draw, minimum size=6mm]
+                \tikzstyle{transition}=[rectangle, thick, draw, minimum size=4mm]
+
+                \node [place] (b1) at (0,2) [label=below:$b_1$] {};
+                \node [place] (b2) at (0,0) [label=below:$b_2$] {};
+                \node [transition] (a) at (1,2) {$a$};
+                \node [place] (b3) at (2,2) [label=below:$b_3$] {};
+                \node [place] (b4) at (2,1) [label=below:$b_4$] {};
+                \node [transition] (c) at (3,0) {$c$};
+                \node [place] (b5) at (4,0) [label=below:$b_5$] {};
+
+                \draw [edge] (b1) to (a);
+                \draw [edge] (b1) to [bend left] (b3);
+                \draw [edge] (b1) to (b4);
+                \draw [edge] (b1) to [bend right] (c);
+                \draw [edge] (b1) to [bend left=60] (b5);
+
+                \draw [edge] (a)  to (b3);
+                \draw [edge] (a)  to (b4);
+                \draw [edge] (a)  to [bend right] (c);
+                \draw [edge] (a)  to (b5);
+
+                \draw [edge] (b2) to (c);
+                \draw [edge] (b2) to [bend right] (b5);
+
+                \draw [edge] (b4) to (c);
+                \draw [edge] (b4) to (b5);
+
+                \draw [edge] (c)  to (b5);
+            \end{tikzpicture}
+            \caption{$< \subseteq (B \cup E)^2$}
+            \label{fig:rel2}
+        \end{figure}
+
+        \begin{figure}[h]
+            \centering
+            \begin{tikzpicture}[
+                    auto,
+                    scale=1.5,
+                ]
+                \tikzstyle{edge}=[]
+                \tikzstyle{place}=[circle, thick, draw, minimum size=6mm]
+                \tikzstyle{transition}=[rectangle, thick, draw, minimum size=4mm]
+
+                \node [place] (b1) at (0,2) [label=below:$b_1$] {};
+                \node [place] (b2) at (0,0) [label=below:$b_2$] {};
+                \node [transition] (a) at (1,2) {$a$};
+                \node [place] (b3) at (2,2) [label=below:$b_3$] {};
+                \node [place] (b4) at (2,1) [label=below:$b_4$] {};
+                \node [transition] (c) at (3,0) {$c$};
+                \node [place] (b5) at (4,0) [label=below:$b_5$] {};
+
+                \draw [edge] (b1) to [loop left] (b1);
+                \draw [edge] (b2) to [loop left] (b2);
+                \draw [edge] (b3) to [loop right] (b3);
+                \draw [edge] (b4) to [loop left] (b4);
+                \draw [edge] (b5) to [loop right] (b5);
+                \draw [edge] (a) to [loop above] (a);
+                \draw [edge] (c) to [loop below] (a);
+
+                \draw [edge] (b1) to (a);
+                \draw [edge] (b1) to [bend left=60] (b3);
+                \draw [edge] (b1) to (b4);
+                \draw [edge] (b1) to [bend right] (c);
+                \draw [edge] (b1) to [bend left=90] (b5);
+
+                \draw [edge] (a)  to (b3);
+                \draw [edge] (a)  to (b4);
+                \draw [edge] (a)  to [bend right=40] (c);
+                \draw [edge] (a)  to (b5);
+
+                \draw [edge] (b2) to (c);
+                \draw [edge] (b2) to [bend right=40] (b5);
+
+                \draw [edge] (b4) to (c);
+                \draw [edge] (b4) to (b5);
+
+                \draw [edge] (c)  to (b5);
+            \end{tikzpicture}
+            \caption{$\textbf{li} \subseteq (B \cup E)^2$}
+            \label{fig:rel3}
+        \end{figure}
+
+        \begin{figure}[h]
+            \centering
+            \begin{tikzpicture}[
+                    auto,
+                    scale=1.5,
+                ]
+                \tikzstyle{edge}=[]
+                \tikzstyle{place}=[circle, thick, draw, minimum size=6mm]
+                \tikzstyle{transition}=[rectangle, thick, draw, minimum size=4mm]
+
+                \node [place] (b1) at (0,2) [label=above:$b_1$] {};
+                \node [place] (b2) at (0,0) [label=below:$b_2$] {};
+                \node [transition] (a) at (1,2) {$a$};
+                \node [place] (b3) at (2,2) [label=above:$b_3$] {};
+                \node [place] (b4) at (2,1) [label=below:$b_4$] {};
+                \node [transition] (c) at (3,0) {$c$};
+                \node [place] (b5) at (4,0) [label=below:$b_5$] {};
+
+                \draw [edge] (b1) to [loop left] (b1);
+                \draw [edge] (b2) to [loop left] (b2);
+                \draw [edge] (b3) to [loop left] (b3);
+                \draw [edge] (b4) to [loop left] (b4);
+                \draw [edge] (b5) to [loop left] (b5);
+                \draw [edge] (a) to [loop left] (a);
+                \draw [edge] (c) to [loop left] (a);
+
+                \draw [edge] (b1) to (b2);
+
+                \draw [edge] (b2) to (a);
+                \draw [edge] (b2) to (b3);
+                \draw [edge] (b2) to (b4);
+
+                \draw [edge] (b3) to (b4);
+                \draw [edge] (b3) to (b5);
+                \draw [edge] (b3) to (c);
+            \end{tikzpicture}
+            \caption{$\textbf{co} \subseteq (B \cup E)^2$}
+            \label{fig:rel4}
+        \end{figure}
+        
 
     \item
+        Der größtmögliche $P$-Schnitt ist $\{ b_2, b_3, b_4 \}$. \\
+        Die größtmöglichen $T$-Schnitte sind $\{ a \}$ und $\{ b \}$.
 
 \end{enumerate}
 
