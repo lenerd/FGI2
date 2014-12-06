@@ -289,12 +289,66 @@ Daher kann gesagt werden, dass alle Transitionen bis auf $b$ lebendig sind.
 \section*{Übungsaufgabe 8.5} 
 \begin{enumerate}
     \item
+        Zwei oder mehr Transitionen, die zusammen in einem $T$-Schnitt
+        auftauchen, können nebenläufig ausgeführt werden.
 
     \item
+        Jeder $P$-Schnitt entspricht einer möglichen Markierung in einem
+        Prozess.
+        Alle Stellen, die zusammen in einem $P$-Schnitt enthalten sind,
+        sind gleichzeitig in dieser Markierung belegt.
 
     \item
+        Ein Prozess eines Petrinetzes ist ein Kausalnetz.
+        Diese muss vorgänger-endlich sein.
+        Es ist jedoch möglich, Kausalnetze zu konstruieren, welche nicht
+        vorgänger-endlich sind und damit auch keine Prozesse darstellen können.
+        % Prozess -> endlich verzweigtes Kausalnetz ? (Skript S.113)
 
     \item
+        Sei $R = (B,E,F_R)$, $N_{8.4i} = (P_i,T_i,F_i,W_i,m_{0i})$ für
+        $i \in \{ a,b,c \}$.
+
+        Das Kausalnetz $R$ passt zu den Petrinetzen $N_{8.4a}$ und $N_{8.4b}$.
+        Die Paarungen werden durch die Abbildungspaare $\phi_a$ und $\phi_b$
+        spezifiziert.
+
+        $\phi_{Pa} \colon B \to P_a$
+        \begin{equation}
+            \begin{split}
+                b_1 &\mapsto p_1 \\
+                b_2 &\mapsto p_1 \\
+                b_3 &\mapsto p_1 \\
+                b_4 &\mapsto p_1 \\
+                b_5 &\mapsto p_1
+            \end{split}
+        \end{equation}
+        $\phi_{Ta} \colon B \to T_a$
+        \begin{equation}
+            \begin{split}
+                x &\mapsto a \\
+                y &\mapsto b
+            \end{split}
+        \end{equation}
+
+        $\phi_{Pb} \colon B \to P_b$
+        \begin{equation}
+            \begin{split}
+                b_1 &\mapsto q_1 \\
+                b_2 &\mapsto q_2 \\
+                b_3 &\mapsto q_3 \\
+                b_4 &\mapsto q_3 \\
+                b_5 &\mapsto q_4
+            \end{split}
+        \end{equation}
+        $\phi_{Tb} \colon B \to T_b$
+        \begin{equation}
+            \begin{split}
+                x &\mapsto s \\
+                y &\mapsto t
+            \end{split}
+        \end{equation}
+        
 
 \end{enumerate}
 
