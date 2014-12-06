@@ -201,7 +201,32 @@
         \draw (bg) to node {$d$} (bh);
 
     \end{tikzpicture}
-    \caption{Erreichbarkeitsgraph von $N_{8.4}$}
+    \caption{Erreichbarkeitsgraph $RG$ von $N_{8.4}$}
+    \label{fig:reachability}
+\end{figure}
+
+\begin{figure}[h]
+    \centering
+    \begin{tikzpicture}[
+        auto,
+        scale=2,
+        ->,
+        >=stealth',
+    ]
+
+    \tikzstyle{szk}=[draw, circle]
+
+    \node [szk] (c1) at (3,3) {$C_1$};
+    \node [szk] (c2) at (2,2) {$C_2$};
+    \node [szk] (c3) at (1,1) {$C_3$};
+    \node [szk] (c4) at (0,0) {$C_4$};
+
+    \draw (c1) to node {$b$} (c2);
+    \draw (c2) to node {$b$} (c3);
+    \draw (c3) to node {$b$} (c4);
+
+    \end{tikzpicture}
+    \caption{Reduzierter Erreichbarkeitsgraph $RG^C$ von $N_{8.4}$}
     \label{fig:prozesse}
 \end{figure}
 
