@@ -267,6 +267,25 @@
     \label{fig:rgc}
 \end{figure}
 
+\paragraph{Vorgehen}
+Der Erreichbarkeitsgraph $RG$ (Abb. \ref{fig:reachability}) wird als Eingabe
+des Algorithmus' 7.3 verwendet.
+Im 1. Schritt werden die strengen Zusammenhangskomponenten $C_i$ von $RG$
+berechnet (Rot in \ref{fig:reachability}).
+Im 2. Schritt wird der reduzierte Graph $RG^C$ (Abb. \ref{fig:rgc}) berechnet.
+Die einzige terminale SZK von $RG^C$ ist $C_4$: $F = \{ C_4 \}$.
+Die Lebendigkeitsinvarianz von $t \in \{ a,b,c,d \}$ für eine Markierung $m$
+lautet
+\begin{equation}
+    \prod\nolimits_t (m) = (m \geq W(\bullet,t)) \text{ .}
+\end{equation}
+Für jede Transition $t$ wird geprüft, ob eine Markierung $m \in C_4$ existiert,
+welche $\prod\nolimits_t(m)$ erfüllt.
+Für $a$, $c$ und $d$ ist jeweils eine vorhanden.
+Es existiert jedoch keine Markierung, in der $b$ aktiviert ist.
+Daher kann gesagt werden, dass alle Transitionen bis auf $b$ lebendig sind.
+
+
 \section*{Übungsaufgabe 8.5} 
 \begin{enumerate}
     \item
