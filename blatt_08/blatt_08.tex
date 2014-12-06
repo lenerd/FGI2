@@ -168,21 +168,21 @@
 
         % b edges
         \draw[edge] (gb) to node {$b$} (ec);
-        \draw[edge] (gc) to node {$b$} (ed);
+        \draw[edge] (gc) to [near start] node {$b$} (ed);
         \draw[edge] (ed) to node {$b$} (ce);
-        \draw[edge] (gd) to node {$b$} (ee);
-        \draw[edge] (ee) to node {$b$} (cf);
+        \draw[edge] (gd) to [near start] node {$b$} (ee);
+        \draw[edge] (ee) to [near start] node {$b$} (cf);
         \draw[edge] (cf) to node {$b$} (ag);
 
         % c edges
         \draw[edge] (gb) to node {$c$} (fa);
         \draw[edge] (hb) to node {$c$} (ga);
         \draw[edge] (hc) to node {$c$} (gb);
-        \draw[edge] (fd) to node {$c$} (ec);
+        \draw[edge] (fd) to [near end] node {$c$} (ec);
         \draw[edge] (hd) to node {$c$} (gc);
-        \draw[edge] (fe) to node {$c$} (ed);
+        \draw[edge] (fe) to [near end] node {$c$} (ed);
         \draw[edge] (he) to node {$c$} (gd);
-        \draw[edge] (df) to node {$c$} (ce);
+        \draw[edge] (df) to [near end] node {$c$} (ce);
         \draw[edge] (ff) to node {$c$} (ee);
         \draw[edge] (dg) to node {$c$} (cf);
         \draw[edge] (bh) to node {$c$} (ag);
@@ -191,15 +191,16 @@
         \draw[edge] (ga) to node {$d$} (gb);
         \draw[edge] (ha) to node {$d$} (hb);
         \draw[edge] (hb) to node {$d$} (hc);
-        \draw[edge] (fc) to node {$d$} (fd);
+        \draw[edge] (fc) to [at start] node {$d$} (fd);
         \draw[edge] (hc) to node {$d$} (hd);
-        \draw[edge] (fd) to node {$d$} (fe);
+        \draw[edge] (fd) to [at start] node {$d$} (fe);
         \draw[edge] (hd) to node {$d$} (he);
-        \draw[edge] (de) to node {$d$} (df);
+        \draw[edge] (de) to [at start] node {$d$} (df);
         \draw[edge] (fe) to node {$d$} (ff);
         \draw[edge] (df) to node {$d$} (dg);
         \draw[edge] (bg) to node {$d$} (bh);
 
+        % SZKs
         \draw[szk] (6.5,0.25) to (7.4,0.25)
                               to (7.4,-4.25)
                               to (6.6,-4.25)
@@ -209,15 +210,15 @@
                               to (4.5,0.25)
                               to (6.5,0.25)
                               ;
-        \draw[szk] (4.5,-1.75) to (5.4,-1.75)
-                               to (5.4,-5.25)
+        \draw[szk] (4.5,-1.75) to (5.35,-1.75)
+                               to (5.35,-5.25)
                                to (4.6,-5.25)
                                to (3.6,-4.25)
                                to (3.6,-1.75)
                                to (4.5,-1.75)
                                ;
-        \draw[szk] (2.5,-3.75) to (3.4,-3.75)
-                               to (3.4,-6.25)
+        \draw[szk] (2.5,-3.75) to (3.35,-3.75)
+                               to (3.35,-6.25)
                                to (2.6,-6.25)
                                to (1.6,-5.25)
                                to (1.6,-3.75)
@@ -263,7 +264,7 @@
 
     \end{tikzpicture}
     \caption{Reduzierter Erreichbarkeitsgraph $RG^C$ von $N_{8.4}$}
-    \label{fig:prozesse}
+    \label{fig:rgc}
 \end{figure}
 
 \section*{Übungsaufgabe 8.5} 
