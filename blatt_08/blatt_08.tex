@@ -104,101 +104,136 @@
     \begin{tikzpicture}[
         auto,
         scale=2,
-        ->,
-        >=stealth',
     ]
+        \tikzstyle{edge}=[->,>=stealth']
+        \tikzstyle{szk}=[red, rounded corners=8pt]
 
-        % line a
+        % row a
         \node (fa) at (5,0) {$(2,0,0)$};
         \node (ga) at (6,0) {$(1,0,3)$};
         \node (ha) at (7,0) {$(0,0,6)$};
 
-        % line b
+        % row b
         \node (gb) at (6,-1) {$(1,1,2)$};
         \node (hb) at (7,-1) {$(0,1,5)$};
 
-        % line c
+        % row c
         \node (ec) at (4,-2) {$(1,0,2)$};
         \node (fc) at (5,-2) {$(0,0,5)$};
         \node (gc) at (6,-2) {$(1,2,1)$};
         \node (hc) at (7,-2) {$(0,2,4)$};
 
-        % line d
+        % row d
         \node (ed) at (4,-3) {$(1,1,1)$};
         \node (fd) at (5,-3) {$(0,1,4)$};
         \node (gd) at (6,-3) {$(1,3,0)$};
         \node (hd) at (7,-3) {$(0,3,3)$};
 
-        % line e
+        % row e
         \node (ce) at (2,-4) {$(1,0,1)$};
         \node (de) at (3,-4) {$(0,0,4)$};
         \node (ee) at (4,-4) {$(1,2,0)$};
         \node (fe) at (5,-4) {$(0,2,3)$};
         \node (he) at (7,-4) {$(0,4,2)$};
 
-        % line f
+        % row f
         \node (cf) at (2,-5) {$(1,1,0)$};
         \node (df) at (3,-5) {$(0,1,3)$};
         \node (ff) at (5,-5) {$(0,3,2)$};
 
-        % line g
+        % row g
         \node (ag) at (0,-6) {$(1,0,0)$};
         \node (bg) at (1,-6) {$(0,0,3)$};
         \node (dg) at (3,-6) {$(0,2,2)$};
 
-        % line h
+        % row h
         \node (bh) at (1,-7) {$(0,1,2)$};
 
         % start
         \node (start) at (4,0) {};
-        \draw (start) to (fa);
+        \draw[edge] (start) to (fa);
 
         % a edges
-        \draw (fa) to node {$a$} (ga);
-        \draw (ga) to node {$a$} (ha);
-        \draw (gb) to node {$a$} (hb);
-        \draw (ec) to node {$a$} (fc);
-        \draw (gc) to node {$a$} (hc);
-        \draw (ed) to node {$a$} (fd);
-        \draw (gd) to node {$a$} (hd);
-        \draw (ee) to node {$a$} (fe);
-        \draw (ce) to node {$a$} (de);
-        \draw (cf) to node {$a$} (df);
-        \draw (ag) to node {$a$} (bg);
+        \draw[edge] (fa) to node {$a$} (ga);
+        \draw[edge] (ga) to node {$a$} (ha);
+        \draw[edge] (gb) to node {$a$} (hb);
+        \draw[edge] (ec) to node {$a$} (fc);
+        \draw[edge] (gc) to node {$a$} (hc);
+        \draw[edge] (ed) to node {$a$} (fd);
+        \draw[edge] (gd) to node {$a$} (hd);
+        \draw[edge] (ee) to node {$a$} (fe);
+        \draw[edge] (ce) to node {$a$} (de);
+        \draw[edge] (cf) to node {$a$} (df);
+        \draw[edge] (ag) to node {$a$} (bg);
 
         % b edges
-        \draw (gb) to node {$b$} (ec);
-        \draw (gc) to node {$b$} (ed);
-        \draw (ed) to node {$b$} (ce);
-        \draw (gd) to node {$b$} (ee);
-        \draw (ee) to node {$b$} (cf);
-        \draw (cf) to node {$b$} (ag);
+        \draw[edge] (gb) to node {$b$} (ec);
+        \draw[edge] (gc) to node {$b$} (ed);
+        \draw[edge] (ed) to node {$b$} (ce);
+        \draw[edge] (gd) to node {$b$} (ee);
+        \draw[edge] (ee) to node {$b$} (cf);
+        \draw[edge] (cf) to node {$b$} (ag);
 
         % c edges
-        \draw (gb) to node {$c$} (fa);
-        \draw (hb) to node {$c$} (ga);
-        \draw (hc) to node {$c$} (gb);
-        \draw (fd) to node {$c$} (ec);
-        \draw (hd) to node {$c$} (gc);
-        \draw (fe) to node {$c$} (ed);
-        \draw (he) to node {$c$} (gd);
-        \draw (df) to node {$c$} (ce);
-        \draw (ff) to node {$c$} (ee);
-        \draw (dg) to node {$c$} (cf);
-        \draw (bh) to node {$c$} (ag);
+        \draw[edge] (gb) to node {$c$} (fa);
+        \draw[edge] (hb) to node {$c$} (ga);
+        \draw[edge] (hc) to node {$c$} (gb);
+        \draw[edge] (fd) to node {$c$} (ec);
+        \draw[edge] (hd) to node {$c$} (gc);
+        \draw[edge] (fe) to node {$c$} (ed);
+        \draw[edge] (he) to node {$c$} (gd);
+        \draw[edge] (df) to node {$c$} (ce);
+        \draw[edge] (ff) to node {$c$} (ee);
+        \draw[edge] (dg) to node {$c$} (cf);
+        \draw[edge] (bh) to node {$c$} (ag);
 
         % d edges
-        \draw (ga) to node {$d$} (gb);
-        \draw (ha) to node {$d$} (hb);
-        \draw (hb) to node {$d$} (hc);
-        \draw (fc) to node {$d$} (fd);
-        \draw (hc) to node {$d$} (hd);
-        \draw (fd) to node {$d$} (fe);
-        \draw (hd) to node {$d$} (he);
-        \draw (de) to node {$d$} (df);
-        \draw (fe) to node {$d$} (ff);
-        \draw (df) to node {$d$} (dg);
-        \draw (bg) to node {$d$} (bh);
+        \draw[edge] (ga) to node {$d$} (gb);
+        \draw[edge] (ha) to node {$d$} (hb);
+        \draw[edge] (hb) to node {$d$} (hc);
+        \draw[edge] (fc) to node {$d$} (fd);
+        \draw[edge] (hc) to node {$d$} (hd);
+        \draw[edge] (fd) to node {$d$} (fe);
+        \draw[edge] (hd) to node {$d$} (he);
+        \draw[edge] (de) to node {$d$} (df);
+        \draw[edge] (fe) to node {$d$} (ff);
+        \draw[edge] (df) to node {$d$} (dg);
+        \draw[edge] (bg) to node {$d$} (bh);
+
+        \draw[szk] (6.5,0.25) to (7.4,0.25)
+                              to (7.4,-4.25)
+                              to (6.6,-4.25)
+                              to (5.6,-3.25)
+                              to (5.6,-1.25)
+                              to (4.5,-0.25)
+                              to (4.5,0.25)
+                              to (6.5,0.25)
+                              ;
+        \draw[szk] (4.5,-1.75) to (5.4,-1.75)
+                               to (5.4,-5.25)
+                               to (4.6,-5.25)
+                               to (3.6,-4.25)
+                               to (3.6,-1.75)
+                               to (4.5,-1.75)
+                               ;
+        \draw[szk] (2.5,-3.75) to (3.4,-3.75)
+                               to (3.4,-6.25)
+                               to (2.6,-6.25)
+                               to (1.6,-5.25)
+                               to (1.6,-3.75)
+                               to (2.5,-3.75)
+                               ;
+        \draw[szk] (0.5,-5.75) to (1.4,-5.75)
+                               to (1.4,-7.2)
+                               to (0.6,-7.2)
+                               to (-0.4,-6.2)
+                               to (-0.4,-5.75)
+                               to (0.5,-5.75)
+                               ;
+       \node[red] (c1) at (7,-4.5) {$C_1$};
+       \node[red] (c2) at (5,-5.5) {$C_2$};
+       \node[red] (c3) at (3,-6.5) {$C_3$};
+       \node[red] (c4) at (1.75,-6.75) {$C_4$};
 
     \end{tikzpicture}
     \caption{Erreichbarkeitsgraph $RG$ von $N_{8.4}$}
