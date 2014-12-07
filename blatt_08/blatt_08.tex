@@ -476,14 +476,19 @@ Daher kann gesagt werden, dass alle Transitionen bis auf $b$ lebendig sind.
         sind gleichzeitig in dieser Markierung belegt.
 
     \item
-        Ein Prozess eines Petrinetzes ist ein Kausalnetz.
-        Diese muss vorgänger-endlich sein.
-        Es ist jedoch möglich, Kausalnetze zu konstruieren, welche nicht
-        vorgänger-endlich sind und damit auch keine Prozesse darstellen können.
-        % Prozess -> endlich verzweigtes Kausalnetz ? (Skript S.113)
+        Sei $N = (P,T,F,W,\textbf{m}_0)$.
+        Ein Prozess von $N$ ist ein \emph{Paar $(R, \phi)$} aus einem
+        Kausalnetz $R = (B, E, F_R)$ und einem Abbildungspaar
+        $\phi = (\phi_P, \phi_T)$.
+        Mit $\phi_P \colon B \to P$ und $\phi_T \colon E \to T$.
+
+        Das Kausalnetz des Prozesses muss zudem vorgänger-endlich sein.
+        Es ist möglich, Kausalnetze zu konstruieren, welche nicht
+        vorgänger-endlich sind und damit auch nicht \emph{Teil} eines Prozesses
+        sein können.
 
     \item
-        Sei $R = (B,E,F_R)$, $N_{8.4i} = (P_i,T_i,F_i,W_i,m_{0i})$ für
+        Sei $R = (B,E,F_R)$, $N_{8.4i} = (P_i,T_i,F_i,W_i,\textbf{m}_{0i})$ für
         $i \in \{ a,b,c \}$.
 
         Das Kausalnetz $R$ passt zu den Petrinetzen $N_{8.4a}$ und $N_{8.4b}$.
