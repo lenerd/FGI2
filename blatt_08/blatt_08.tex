@@ -41,11 +41,17 @@
 
 \section*{Übungsaufgabe 8.3} 
 \begin{enumerate}
-    \item Abbildung \ref{fig:prozesse} zeigt den größtmöglichen Prozess.
+    \item 
+        Aus Platzgründen haben wir uns dagegen entschieden, alle möglichen
+        Prozesse einzeln zu zeichnen:
+        Abbildung \ref{fig:prozesse} auf Seite \pageref{fig:prozesse} zeigt den
+        größtmöglichen Prozess.
         Farbige Abschnitte können inklusive aller rechts an ihnen
         anschließenden Abschnitte (transitiv) weggelassen werden.
         Der Rest ist wiederum ein möglicher Prozess.
-        \begin{figure}[h]
+        Weiter hin können entweder die gestrichelten Kanten oder die
+        gepunkteten Kanten verwendet werden.
+        \begin{figure}[h!]
             \centering
             \begin{tikzpicture}
                 \tikzstyle{place}=[circle, thick, draw, minimum size=6mm]
@@ -60,15 +66,15 @@
                 \node [red, place] (b5) [label=below:$p_4|b_5$, below= of b4] {};
 
                 \node [green, transition] (tb1) [right= of b3] {$b$};
-                \node [blue, transition] (tc1) [right= of b4] {$c$};
-
                 \node [green, place] (b6) [label=below:$p_5|b_6$, right= of tb1] {};
+
+                \node [blue, transition] (tc1) [right= of b4] {$c$};
                 \node [blue, place] (b7) [label=below:$p_5|b_7$, right= of tc1] {};
 
                 \node [orange, transition] (td1) [right= of b6] {$d_1$};
-                \node [purple, transition] (td2) [right= of b7] {$d_2$};
-
                 \node [orange, place] (b8) [label=below:$p_6|b_8$, right= of td1] {};
+
+                \node [purple, transition] (td2) [right= of b7] {$d_2$};
                 \node [purple, place] (b9) [label=below:$p_6|b_9$, right= of td2] {};
 
                 \draw [red, pre]  (ta1) to (b1);
@@ -78,10 +84,12 @@
                 \draw [red, post] (ta1) to (b5);
 
                 \draw [green, pre]  (tb1) to (b2);
-                \draw [green, pre]  (tb1) to (b3);
+                \draw [green, pre, dashed]  (tb1) to (b3);
+                \draw [green, pre, densely dotted, bend left, thick]  (tb1) to (b4);
                 \draw [green, post] (tb1) to (b6);
 
-                \draw [blue, pre]  (tc1) to (b4);
+                \draw [blue, pre, dashed]  (tc1) to (b4);
+                \draw [blue, pre, densely dotted, bend right, thick]  (tc1) to (b3);
                 \draw [blue, pre]  (tc1) to (b5);
                 \draw [blue, post] (tc1) to (b7);
 
@@ -95,7 +103,11 @@
             \label{fig:prozesse}
         \end{figure}
 
-    \item $R_{8.3} = (B, E, F_R)$
+    \item $R_{8.3} = (B, E, F_R)$ \\
+        Die Relationen $\lessdot, <, \textbf{li}$ und $\textbf{co}$ sind auf den
+        Abbildungen \ref{fig:rel1} bis \ref{fig:rel4} (Seiten \pageref{fig:rel1}
+        bis \pageref{fig:rel4}) dargestellt.
+
         \begin{figure}[h]
             \centering
             \begin{tikzpicture}[
