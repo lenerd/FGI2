@@ -42,6 +42,45 @@
 \section*{Übungsaufgabe 9.3} 
 \begin{enumerate}
     \item
+        \begin{behaupt}
+            Beschränktheit ist eine monotone Eigenschaft.
+            Wenn ein P/T-Netz unter der Anfangsmarkierung $\textbf{m}_0$
+            unbeschränkt ist, ist es auch unter jeder größeren Anfangsmarkierung
+            $\textbf{m}_0' \geq \textbf{m}_0$ unbeschränkt.
+        \end{behaupt}
+        \begin{proof} \hfill \\
+            \begin{enumerate}
+                \item $\textbf{m}_0 = \textbf{m}_0'$ \\
+                    In der Behauptung wird vorausgesetzt, dass $N$ unter
+                    $\textbf{m}_0$ unbeschränkt ist. 
+
+                \item $\textbf{m}_0 > \textbf{m}_0'$ \\
+                    Sei $\Delta' = \textbf{m}_0' - \textbf{m}_0 > 0$.
+                    Wenn $N$ unter $\textbf{m}_0$ unbeschränkt ist, so gibt es
+                    eine Transitionsfolge $\sigma \in T^*$ mit
+                    $\textbf{m}_0 \stackrel{\sigma}{\to} \textbf{m}_1$ und
+                    $\textbf{m}_1 > \textbf{m}_0$.
+                    Sei $\Delta_\sigma = \textbf{m}_1 - \textbf{m}_0 > 0$.
+                    Da $\textbf{m}_0' > \textbf{m}_0$ gilt, kann die
+                    Transitionsfolge $\sigma$ auch von $\textbf{m}_0'$
+                    ausgeführt werden:
+                    $\textbf{m}_0' \stackrel{\sigma}{\to} \textbf{m}_1'$.
+                    Damit ist Bedingung a) von Satz 7.1 erfüllt.
+                    \begin{equation}
+                        \begin{split}
+                            \textbf{m}_0 &< \textbf{m}_1 \\
+                            \gdw \textbf{m}_0 &< \textbf{m}_0 + \Delta_\sigma \\
+                            \gdw \textbf{m}_0 + \Delta' &< \textbf{m}_0 + \Delta' + \Delta_\sigma \\
+                            \gdw \textbf{m}_0' &< \textbf{m}_0' + \Delta_\sigma \\
+                            \gdw \textbf{m}_0' &< \textbf{m}_1'
+                        \end{split}
+                        \label{eq:9-3-1}
+                    \end{equation}
+                    Nach Gleichung \ref{eq:9-3-1} ist auch die Bedingung b) von
+                    Satz 7.1 erfüllt.
+                    
+            \end{enumerate}
+        \end{proof}
 
     \item
 
