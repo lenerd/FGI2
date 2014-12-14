@@ -180,6 +180,42 @@
     \item
 
     \item
+        Die hinzugefügten Plätze stellen jeweils eine Kapazitätsbeschränkung zu
+        einem anderen Platz dar.
+        Ausgehend von einer Startmarkierung $\textbf{m}_0$ muss in jeder
+        erreichbaren Markierung $m$
+        ($\textbf{m}_0 \stackrel{w}{\to} \textbf{m}, w \in T^*$)
+        \begin{equation}
+            \begin{gathered}
+                \textbf{m}(p_1) + \textbf{m}(p_6) = \textbf{m}_0(p_1) + \textbf{m}_0(p_6) \\
+                \land \\
+                \textbf{m}(p_5) + \textbf{m}(p_7) = \textbf{m}_0(p_5) + \textbf{m}_0(p_7) \\
+                \land \\
+                \textbf{m}(p_4) + \textbf{m}(p_8) = \textbf{m}_0(p_4) + \textbf{m}_0(p_8)
+            \end{gathered}
+        \end{equation}
+        gelten.
+        In dem Kontext der Apotheke, lassen sich die Beschränkungen wie folgt
+        übersetzen.
+        \begin{itemize}
+            \item
+                An der Annahmestelle ($p_1$) ist nicht unbegrenzt Platz, daher
+                müssen ggf. erst Dinge ins Lager eingeräumt werden, bevor die
+                nächste Lieferung angenommen werden kann.
+
+            \item
+                Das Lager ($p_5$) hat ebenfalls nur eine begrenzte Kapazität:
+                Es können nicht beliebig viele Medikamente vor Ort gelagert
+                werden.
+
+            \item
+                Es passen nicht beliebig viele Kunden in den Verkaufsraum
+                ($p_4$).
+                Ist dieser voll, müssen die Kunden draußen warten, bis genug
+                Platz ist, damit sie die Apotheke betreten können (damit $f$
+                aktiviert ist).
+
+        \end{itemize}
 
     \item
         \begin{align}
