@@ -185,14 +185,14 @@
         
 
     \item
-        Die S-Invariantenvektoren $i \in \mathbb{Z}^{|P|}$ von $N_{9.4a}$ sind
+        Die S-Invariantenvektoren $\textbf{i} \in \mathbb{Z}^{|P|}$ von $N_{9.4a}$ sind
         die Lösungen der Gleichung
         \begin{equation}
-            \Delta_{N_{9.4a}}^T \cdot i = 0 \text{ .}
+            \Delta_{N_{9.4a}}^T \cdot \textbf{i} = 0 \text{ .}
         \end{equation}
         Die Lösung des entsprechenden Gleichungssystems lautet
         \begin{equation}
-            i =
+            \textbf{i} =
             \begin{pmatrix}
                 0 \\ a \\ a \\ 0 \\ 0
             \end{pmatrix}
@@ -212,10 +212,10 @@
         \end{equation}
         
     \item
-        Theorem 7.35 besagt, wenn es eine S-Invariante $i$ mit
-        $\forall p : i(p) > 0$ gibt, dann ist das Netz strukturell beschränkt.
+        Theorem 7.35 besagt, wenn es eine S-Invariante $\textbf{i}$ mit
+        $\forall p : \textbf{i}(p) > 0$ gibt, dann ist das Netz strukturell beschränkt.
 
-        Da für alle $i \in S_{9.4a}$ gilt, $i(p_1) = 0$, ist die Bedingung nicht
+        Da für alle $\textbf{i} \in S_{9.4a}$ gilt, $\textbf{i}(p_1) = 0$, ist die Bedingung nicht
         erfüllt und nach Theorem 7.35 kann nicht gesagt werden, dass $N_{9.4a}$
         strukturell beschränkt sei.
 
@@ -233,19 +233,19 @@
                  0 &  0 &  0 &  0 &  1 & -1 \\
             \end{pmatrix}
         \end{equation}
-        Die S-Invariantenvektoren $i \in \mathbb{Z}^{|P|}$ von $N_{9.4a}$ sind
+        Die S-Invariantenvektoren $\textbf{i} \in \mathbb{Z}^{|P|}$ von $N_{9.4a}$ sind
         die Lösungen der Gleichung
         \begin{equation}
-            \Delta_{N_{9.4a}}^T \cdot i = 0 \text{ .}
+            \Delta_{N_{9.4a}}^T \cdot \textbf{i} = 0 \text{ .}
         \end{equation}
         Die Lösung des entsprechenden Gleichungssystems lautet
         \begin{equation}
-            i =
+            \textbf{i} =
             \begin{pmatrix}
                 a \\ b \\ b \\ c \\ d \\ a \\ d \\ c
             \end{pmatrix}
             \quad
-            a, b, c, d \in \mathbb{Z} \land i \neq 0
+            a, b, c, d \in \mathbb{Z} \land \textbf{i} \neq 0
         \end{equation}
         Damit gilt für die Menge der S-Invariantenvektoren $S_{9.4b}$
         \begin{equation}
@@ -260,12 +260,12 @@
             \right\}
             \text{ .}
         \end{equation}
-        Sei $i_1 =
+        Sei $\textbf{i}_1 =
         \begin{pmatrix}
             1 & 1 & 1 & 1 & 1 & 1 & 1 & 1
         \end{pmatrix}^T \in S_{9.4b}$
         .
-        $i_1$ ist eine überdeckende, positive S-Invariante von $N_{9.4b}$ und
+        $\textbf{i}_1$ ist eine überdeckende, positive S-Invariante von $N_{9.4b}$ und
         erfüllt damit die Bedingung aus Theorem 7.35.
         Also kann gesagt werden, dass $N_{9.4b}$ strukturell beschränkt ist.
 
@@ -273,7 +273,7 @@
         Die hinzugefügten Plätze stellen jeweils eine Kapazitätsbeschränkung zu
         einem anderen Platz dar.
         Ausgehend von einer Startmarkierung $\textbf{m}_0$ muss in jeder
-        erreichbaren Markierung $m$
+        erreichbaren Markierung $\textbf{m}$
         ($\textbf{m}_0 \stackrel{w}{\to} \textbf{m}, w \in T^*$)
         \begin{equation}
             \begin{gathered}
@@ -309,14 +309,14 @@
 
     \item
         \begin{align}
-            i_1 &= \left( 2, 1, 1, 3, 3, 2, 3, 3 \right)^T \\
-            m_0 &= \left( 0, 1, 2, 0, 1, 5, 10, 8 \right)^T
+            \textbf{i}_1 &= \left( 2, 1, 1, 3, 3, 2, 3, 3 \right)^T \\
+            \textbf{m}_0 &= \left( 0, 1, 2, 0, 1, 5, 10, 8 \right)^T
         \end{align}
-        Da $i_1$ ein Invariantenvektor ist, gilt nach Satz 7.32
+        Da $\textbf{i}_1$ ein Invariantenvektor ist, gilt nach Satz 7.32
         \begin{equation}
             \begin{gathered}
-                i_1^T \cdot \textbf{m} = i_1^T \cdot \textbf{m}_0 \quad \gdw \\
-                2m_1 + m_2 + m_3 + 3m_4 + 3m_5 + 2m_6 + 3m_7 + 3m_8 = 70
+                \textbf{i}_1^T \cdot \textbf{m} = \textbf{i}_1^T \cdot \textbf{m}_0 \quad \gdw \\
+                2\textbf{m}(p_1) + \textbf{m}(p_2) + \textbf{m}(p_3) + 3\textbf{m}(p_4) + 3\textbf{m}(p_5) + 2\textbf{m}(p_6) + 3\textbf{m}(p_7) + 3\textbf{m}(p_8) = 70
                 \text{ .}
             \end{gathered}
         \end{equation}
