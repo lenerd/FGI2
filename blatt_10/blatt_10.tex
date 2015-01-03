@@ -15,6 +15,7 @@
 \usepackage{tikz}
 \usetikzlibrary{arrows}
 \usetikzlibrary{automata}
+\usetikzlibrary{shapes}
 \usetikzlibrary{petri}
 \usetikzlibrary{positioning}
 
@@ -188,8 +189,79 @@
 \section*{Übungsaufgabe 10.5} 
 \begin{enumerate}
     \item
+        Farbmengen $\in \mathcal{C}$:
+        \begin{align}
+            beds &= \left\{ b_0, b_1, b_2 \right\} \\
+            childen &= \left\{ c_0, c_1, c_2 \right\} \\
+            dolls &= \left\{ d_0, d_1, d_2 \right\}
+        \end{align}
+        
+        Funktionen:
+        \begin{align}
+            \begin{split}
+                & bed\colon children \to beds \\
+                & c_i \mapsto b_i \text{ für } i \in \mathbb{Z}_3
+            \end{split}
+            \begin{split}
+                & dolls\colon children \to Bag(dolls) \\
+                & c_i \mapsto d_i + d_{(i + 1 \mod 3)} \text{ für } i \in \mathbb{Z}_3
+            \end{split}
+        \end{align}
+        
+        \begin{figure}[h]
+            \centering
+            \begin{tikzpicture}[
+                    auto,
+                    scale=2,
+                ]
+                \tikzstyle{edge}=[->,>=stealth']
+                \tikzstyle{place}=[ellipse, thick, draw, minimum height=15mm, minimum width=35mm]
+                \tikzstyle{transition}=[rectangle, thick, draw, minimum size=10mm]
+
+                \node [place] (play)  [label=above:Play]  at (0,0) {};
+                \node [place] (dolls) [label=above:Dolls] at (0,2) {'$d_0$', '$d_1$', '$d_2$'};
+                \node [place] (eat)   [label=above:Eat]   at (0,4) {'$c_0$', '$c_1$', '$c_2$'};
+                \node [place] (beds)  [label=above:Beds]  at (0,6) {'$b_0$', '$b_1$', '$b_2$'};
+                \node [place] (sleep) [label=above:Sleep] at (0,8) {};
+
+                \node [transition] (a) at (2,2) {};
+                \node [transition] (b) at (2,6) {};
+                \node [transition] (c) at (3,7) {};
+
+                % a
+                \draw [edge] (eat) to node {$x$} (a);
+                \draw [edge] (dolls) to node {$dolls(x)$} (a);
+                \draw [edge] (a) to node {$x$} (play);
+                % b
+                \draw [edge, bend left=45] (sleep) to node {$x$} (b);
+                \draw [edge] (b) to node {$bed(x)$} (beds);
+                \draw [edge] (b) to node {$x$} (eat);
+                % c
+                \draw [edge] (beds) to node {$bed(x)$} (c);
+                \draw [edge, bend right=45] (play) to node {$x$} (c);
+                \draw [edge, bend right] (c) to node {$x$} (sleep);
+                \draw [edge, bend left=30] (c) to node {$dolls(x)$} (dolls);
+            \end{tikzpicture}
+            \caption{Kinder \dots}
+            \label{fig:children}
+        \end{figure}
 
     \item
+        Variablen:
+        \begin{equation}
+            dom(x) = children
+        \end{equation}
+        Farbzuweisungsabbildung:
+        \begin{equation}
+            \begin{split}
+                & cd \colon P \to \mathcal{C} \\
+                & Sleep \mapsto \left\{ c_0, c_1, c_2 \right\} \\
+                & Beds \mapsto \left\{ b_0, b_1, b_2 \right\} \\
+                & Eat \mapsto \left\{ c_0, c_1, c_2 \right\} \\
+                & Dolls \mapsto \left\{ d_0, d_1, d_2 \right\} \\
+                & Play \mapsto \left\{ c_0, c_1, c_2 \right\}
+            \end{split}
+        \end{equation}
 
     \item
 
