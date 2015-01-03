@@ -12,6 +12,14 @@ class Place:
 
     __repr__ = __str__
 
+    def __eq__(self, other):
+        return self.name == other.name
+
+    def __hash__(self):
+        return hash(self.name)
+
+    def __lt__(self, other):
+        return self.name < other.name
 
 P = [
     Place('p1', {'b', 'e'}, {'a', 'c'}),
@@ -39,13 +47,18 @@ def main():
             put = put.union(pl.put)
             get = get.union(pl.get)
         if get.issubset(put):
-            print("trap:\t{}".format(p))
+            # print("trap:\t{}".format(p))
             traps.add(p)
         if get.issuperset(put):
-            print("siphon:\t{}".format(p))
+            # print("siphon:\t{}".format(p))
             siphons.add(p)
-    print("{} traps".format(len(traps)))
-    print("{} siphons".format(len(siphons)))
+    print("{} traps:".format(len(traps)))
+    for t in sorted(traps, key=lambda x: (len(x), x)):
+        print(t)
+    print('')
+    print("{} siphons:".format(len(siphons)))
+    for s in sorted(siphons, key=lambda x: (len(x), x)):
+        print(s)
 
 
 if __name__ == '__main__':
