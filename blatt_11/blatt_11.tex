@@ -49,12 +49,30 @@
             lebendig und beschränkt ist.
         \end{behaupt}
         \begin{proof} \hfill \\
-            \begin{enumerate}[a)]
-                \item Termination möglich \\
+            \begin{enumerate}
+                \item[a), b)] Termination möglich und korrekt \\
+                    Durch die Lebendigkeit gilt
+                    \begin{equation}
+                        \forall \textbf{m} \in \textbf{R}(N) \ 
+                        \exists \sigma \in T^* :
+                        \textbf{m} \stackrel{\sigma}{\longrightarrow}
+                        \textbf{m}' \land
+                        \textbf{m}' \stackrel{t^*}{\longrightarrow}
+                        \text{ .}
+                    \end{equation}
+                    Es folgt
+                    $\textbf{m}' = \textbf{m}_e + \textbf{k} \geq \textbf{m}_e$.
+                    \begin{equation}
+                        \textbf{m}_e + \textbf{k}
+                         \stackrel{t^*}{\longrightarrow}
+                        \textbf{m}_a + \textbf{k}
+                    \end{equation}
+                    Da $N$ beschränkt ist, muss $\textbf{k} = \textbf{0}$
+                    gelten.
+                    Damit ist bei Termination ausschließlich eine Marke in $e$
+                    vorhanden.
 
-                \item korrekte Termination \\
-
-                \item Nützlichkeit \\
+                \item[c)] Nützlichkeit \\
                     Die Lebendigkeit sagt aus, dass es für jede Transition $t$
                     und jede erreichbare Markierung $\textbf{m}$ eine
                     Transitionsfolge $\sigma$ gibt, nach dieser $t$ aktiviert
