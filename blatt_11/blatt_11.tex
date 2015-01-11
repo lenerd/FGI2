@@ -48,8 +48,39 @@
             Ein WF-Netz $N$ ist genau dann korrekt, wenn sein Abschluss
             $\overline{N}$ lebendig und beschränkt ist. (Satz 8.20)
         \end{behaupt}
-        \begin{proof}
-            TODO
+        \begin{proof} \hfill \\
+            \begin{enumerate}[I.]
+                \item
+                    Wenn ein WF-Netz $N$ korrekt ist, dann ist sein Abschluss
+                    $\overline{N}$ lebendig und beschränkt. \\
+                    Bedingung a) für ein korrektes WF-Netz sagt aus, dass es
+                    für jede erreichbare Markierung ein Transitionsfolge gibt,
+                    welche nach $e$ führt.
+                    Bedingung c) sagt aus, dass $m_e$ von jeder erreichbaren
+                    Markierung aus erreichbar ist.
+                    In $\overline{N}$ wird $t^*$ mit
+                    $m_e \stackrel{t^*}{\longrightarrow} m_a$ hinzugenommen.
+                    Also kann jede Transition $t$ von jeder erreichbaren
+                    Markierung aus aktiviert werden.
+                    $\overline{N}$ ist also lebendig.
+                    \begin{equation}
+                        \forall t \in T \ 
+                        \forall \textbf{m} \in \textbf{R}(N) \ 
+                        \exists \sigma \in T^*
+                        : \textbf{m} \stackrel{\sigma t}{\longrightarrow}
+                        \textbf{m}'
+                    \end{equation}
+
+                    TODO: Beschränktheit
+                    
+
+                \item
+                    Wenn der Abschluss eines WF-Netzes $\overline{N}$ lebendig
+                    und beschränkt ist, dann ist $N$ korrekt. \\
+
+                    TODO:
+
+            \end{enumerate}
         \end{proof}
 
     \item
