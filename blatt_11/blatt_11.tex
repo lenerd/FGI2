@@ -277,13 +277,53 @@
         \end{table}
 
     \item
-        TODO
+        $p_{21}$, $p_{22}$, $t_{13}$, und $t_{14}$ können durch P-Seq/T-Seq
+        eliminiert werden.
+        Anschließend gelten
+        \begin{equation}
+            p_{20}^\bullet = p_{37}^\bullet
+            \text{ und }
+            {}^\bullet p_{20} = {}^\bullet p_{37}
+            \text{ .}
+            \label{eq:par*}
+        \end{equation}
+        Die Regel Par lässt sich jedoch nur anwenden, wenn die Vor- und
+        Nachbereiche jeweils eine einzige Transition enthalten.
+        
 
     \item
-        TODO
+        Das WF-Netz ist korrekt, wenn die Modifikation die Lebendigkeit und die
+        Beschränktheit des Abschlusses nicht beeinflussen und das resultierende
+        Netz diese Eigenschaften besitzt.
+
+        Zunächst werden wie oben $p_{21}$, $p_{22}$, $t_{13}$, und $t_{14}$
+        entfernt.
+        Anschließend werden $p_{20}$ und $p_{37}$ zu $p_{neu}$ vereinigt.
+        Da die Transitionen $t_{12}$, $t_{13}$ und $t_{14}$ exakt die gleichen
+        Marken auf die Plätze legen bzw. von diesen entfernen und diese in
+        $\textbf{m}_a$ unmarkiert sind, muss in allen erreichbaren Markierungen
+        $\textbf{m}$ gelten
+        $\textbf{m}(p_{20}) = \textbf{m}(p_{37}) = \textbf{m}(p_{neu})$.
+        Der vereinigte Platz ist also mit dem gleichen $k$ beschränkt, wie die
+        einzelnen Plätze zuvor; es ändert also nichts an der Beschränktheit des
+        Netzes.
+        $t_{18}$ und $t_{21}$ nehmen genau dann jeweils eine Marke aus $p_{20}$
+        und $p_{37}$, wenn sie im modifizierten Netz eine Marke aus $p_{neu}$
+        nehmen.
+        Weitere Plätze sind nicht im Vorbereich dieser Transitionen vorhanden.
+        Die Modifikation ändert also auch nichts an der Aktivierbarkeit und
+        somit an der Lebendigkeit des Netzes.
+
+        Nach der Vereinigung, kann ähnlich wie in 5. vorgegangen werden, um das
+        restliche Netz zu einem trivialen Netz zu vergröbern.
 
     \item
-        TODO
+        Man könnte die Regel Par zu Par* erweitern, so dass zwei Plätze
+        vereinigt werden können, wenn die Vor- und Nachbereiche jeweils
+        identisch sind.
+        Ein Platz kann aufgespalten werden, so dass die zwei resultierenden
+        Plätze jeweils den gleichen Vor- und Nachbereich haben, wie der
+        ursprüngliche Platz.
 
 \end{enumerate}
 
