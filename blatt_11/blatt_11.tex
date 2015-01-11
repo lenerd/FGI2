@@ -46,6 +46,55 @@
     \item
 
     \item
+        \begin{behaupt}
+            Das P/T-Netz $N = ( \{ p \}, \emptyset, \emptyset, p)$ ist das
+            kleinste korrekte Workflownetz.
+        \end{behaupt}
+        \begin{proof} \hfill \\
+            \begin{enumerate}[I.]
+                \item $N$ ist ein Workflownetz
+                    \begin{enumerate}[a)]
+                        \item
+                            Für die besonderen Plätze $a, e$ mit
+                            $^\bullet a = e^\bullet = \emptyset$
+                            gilt $a = e = p$.
+
+                        \item
+                            Es gibt keine Transitionen und außer $p$ keinen
+                            weiteren Platz.
+                            Daher liegen alle Transitionen und Plätze auf
+                            Pfaden zwischen $a$ und $e$.
+
+                        \item
+                            In der Anfangsmarkierung $\textbf{m}_a = p$ ist
+                            ausschließlich $a$ mit einer Marke belegt.
+                            Es gilt $\textbf{m}_a = \textbf{m}_e$.
+
+                    \end{enumerate}
+
+                \item $N$ ist ein korrektes Workflownetz
+                    \begin{enumerate}[a)]
+                        \item
+                            Da es keine Transitionen gibt, gilt
+                            $\textbf{R}(N) = \{ \textbf{m}_a = p \}$.
+                            Für $p$ gibt es die Transitionsfolge
+                            $\varepsilon \in T^*$ mit
+                            $p \stackrel{\varepsilon}{\to} p = \textbf{m}_e$
+                            (Termination möglich)
+
+                        \item
+                            In der einzigen erreichbaren Markierung $p$ (s.\,o.)
+                            ist $e = p$ markiert und es gilt $p = \textbf{m}_e$.
+                            (korrekte Termination)
+
+                        \item
+                            Da es keine Transitionen gibt, sind alle
+                            aktivierbar. (Nützlichkeit)
+
+                    \end{enumerate}
+
+            \end{enumerate}
+        \end{proof}
 
     \item
         siehe \emph{11-3-3.rnw}
