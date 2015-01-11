@@ -45,43 +45,85 @@
 \begin{enumerate}
     \item
         \begin{behaupt}
-            Ein WF-Netz $N$ ist genau dann korrekt, wenn sein Abschluss
-            $\overline{N}$ lebendig und beschränkt ist. (Satz 8.20)
+            Ein WF-Netz $N$ ist korrekt, wenn sein Abschluss $\overline{N}$
+            lebendig und beschränkt ist.
         \end{behaupt}
         \begin{proof} \hfill \\
-            \begin{enumerate}[I.]
-                \item
-                    Wenn ein WF-Netz $N$ korrekt ist, dann ist sein Abschluss
-                    $\overline{N}$ lebendig und beschränkt. \\
-                    Bedingung a) für ein korrektes WF-Netz sagt aus, dass es
-                    für jede erreichbare Markierung ein Transitionsfolge gibt,
-                    welche nach $e$ führt.
-                    Bedingung c) sagt aus, dass $m_e$ von jeder erreichbaren
-                    Markierung aus erreichbar ist.
-                    In $\overline{N}$ wird $t^*$ mit
-                    $m_e \stackrel{t^*}{\longrightarrow} m_a$ hinzugenommen.
-                    Also kann jede Transition $t$ von jeder erreichbaren
-                    Markierung aus aktiviert werden.
-                    $\overline{N}$ ist also lebendig.
+            \begin{enumerate}[a)]
+                \item Termination möglich \\
+
+                \item korrekte Termination \\
+
+                \item Nützlichkeit \\
+                    Die Lebendigkeit sagt aus, dass es für jede Transition $t$
+                    und jede erreichbare Markierung $\textbf{m}$ eine
+                    Transitionsfolge $\sigma$ gibt, nach dieser $t$ aktiviert
+                    ist. 
                     \begin{equation}
                         \forall t \in T \ 
                         \forall \textbf{m} \in \textbf{R}(N) \ 
-                        \exists \sigma \in T^*
-                        : \textbf{m} \stackrel{\sigma t}{\longrightarrow}
-                        \textbf{m}'
+                        \exists \sigma \in T^* :
+                        m \stackrel{\sigma t}{\longrightarrow} m'
                     \end{equation}
-
-                    TODO: Beschränktheit
+                    Da der Abschluss die Menge der erreichbaren Markierungen in
+                    einem korrekten WF-Netz nicht verändert, sondern nur den
+                    Übergang von $\textbf{m}_e$ zu $\textbf{m}_a$ ermöglicht,
+                    sind alle Markierungen, welche in $\overline{N}$ erreichbar
+                    sind, auch in $N$ von $\textbf{m}_a$ aus erreichbar.
+                    Es gibt also für jede Transition $t$ eine Transitionsfolge
+                    $\sigma$ mit
+                    $\textbf{m}_a \stackrel{\sigma}{\longrightarrow} \textbf{m}$,
+                    so dass $t$ in $\textbf{m}$ aktiviert ist.
+                    \begin{equation}
+                        \forall t \in T \ 
+                        \exists \textbf{m} \in \textbf{R}(N) :
+                        m \stackrel{t}{\longrightarrow}
+                    \end{equation}
                     
-
-                \item
-                    Wenn der Abschluss eines WF-Netzes $\overline{N}$ lebendig
-                    und beschränkt ist, dann ist $N$ korrekt. \\
-
-                    TODO:
-
             \end{enumerate}
         \end{proof}
+        % \begin{proof} \hfill \\
+        %     \begin{enumerate}[I.]
+        %         \item
+        %             Wenn ein WF-Netz $N$ korrekt ist, dann ist sein Abschluss
+        %             $\overline{N}$ lebendig und beschränkt.
+
+        %             Bedingung a) für ein korrektes WF-Netz sagt aus, dass es
+        %             für jede erreichbare Markierung ein Transitionsfolge gibt,
+        %             welche nach $e$ führt.
+        %             Bedingung c) sagt aus, dass $m_e$ von jeder erreichbaren
+        %             Markierung aus erreichbar ist.
+        %             In $\overline{N}$ wird $t^*$ mit
+        %             $m_e \stackrel{t^*}{\longrightarrow} m_a$ hinzugenommen.
+        %             Also kann jede Transition $t$ von jeder erreichbaren
+        %             Markierung aus aktiviert werden.
+        %             $\overline{N}$ ist also lebendig.
+        %             \begin{equation}
+        %                 \forall t \in T \ 
+        %                 \forall \textbf{m} \in \textbf{R}(N) \ 
+        %                 \exists \sigma \in T^*
+        %                 : \textbf{m} \stackrel{\sigma t}{\longrightarrow}
+        %                 \textbf{m}'
+        %             \end{equation}
+
+        %             TODO: Beschränktheit
+        %             
+
+        %         \item
+        %             Wenn der Abschluss eines WF-Netzes $\overline{N}$ lebendig
+        %             und beschränkt ist, dann ist $N$ korrekt.
+
+        %             Aus der Lebendigkeit folgt, dass es von $\textbf{m}_a$ aus
+        %             für jede Transition $t$ eine Transitionsfolge
+        %             $\sigma \in T^*$ gibt, so dass $t$ nach dieser aktiviert
+        %             ist.
+        %             Damit ist die Bedingung der Nützlichkeit erfüllt.
+
+        %             TODO: Termination möglich
+        %             TODO: Termination korrekt
+
+        %     \end{enumerate}
+        % \end{proof}
 
     \item
         \begin{behaupt}
