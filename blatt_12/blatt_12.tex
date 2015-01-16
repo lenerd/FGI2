@@ -27,6 +27,7 @@
 
 % macros
 \newcommand{\gdw}{\Leftrightarrow}
+\newcommand{\too}{\longrightarrow}
 
 \title{Formale Grundlagen der Informatik II}
 \subtitle{Aufgabenblatt 12}
@@ -42,16 +43,183 @@
 \maketitle
 
 \section*{Übungsaufgabe 12.3} 
+\begin{align}
+    t_3 &= a \cdot (bb + a) \cdot b + a \cdot (b + (b + bb)) \\
+    t_4 &= a \cdot (bbb + (ab + b) \cdot (b + b))
+\end{align}
+
 \begin{enumerate}
     \item
+        \begin{figure}[h]
+            \centering
+            \begin{subfigure}{0.45\textwidth}
+                \begin{tikzpicture}[
+                        auto,
+                        scale=2,
+                    ]
+                    \tikzstyle{edge}=[
+                        ->,
+                        >=stealth',
+                    ]
+                    \node (a) at (1,4) {$a \cdot (bb + a) \cdot b + a \cdot (b + (b + bb))$};
+                    \node (b) at (0,3) {$(bb + a) \cdot b$};
+                    \node (c) at (2,3) {$b + (b + bb)$};
+                    \node (d) at (0,2) {$bb$};
+                    \node (e) at (1,1) {$b$};
+                    \node (f) at (1,0) {$\checkmark$};
+
+                    \draw [edge] (a) to node {$a$} (b);
+                    \draw [edge] (a) to node {$a$} (c);
+                    \draw [edge, bend left] (b) to node {$a$} (e);
+                    \draw [edge] (b) to node {$b$} (d);
+                    \draw [edge] (d) to node {$b$} (e);
+                    \draw [edge] (c) to node {$b$} (e);
+                    \draw [edge, bend left] (c) to node {$b$} (f);
+                    \draw [edge] (e) to node {$b$} (f);
+                \end{tikzpicture}
+                \caption{Prozessgraph von $t_3$}
+                \label{fig:t3}
+            \end{subfigure}
+            \begin{subfigure}{0.45\textwidth}
+                \centering
+                \begin{tikzpicture}[
+                        auto,
+                        scale=2,
+                    ]
+                    \tikzstyle{edge}=[
+                        ->,
+                        >=stealth',
+                    ]
+                    \node (a) at (1,4) {$a \cdot (bbb + (ab + b) \cdot (b + b))$};
+                    \node (b) at (1,3) {$bbb + (ab + b) \cdot (b + b)$};
+                    \node (c) at (0,2) {$bb$};
+                    \node (d) at (1,2) {$b(b + b)$};
+                    \node (e) at (2,1) {$b + b$};
+                    \node (f) at (0,1) {$b$};
+                    \node (g) at (1,0) {$\checkmark$};
+
+                    \draw [edge] (a) to node {$a$} (b);
+                    \draw [edge] (b) to node {$b$} (c);
+                    \draw [edge] (b) to node {$a$} (d);
+                    \draw [edge, bend left] (b) to node {$b$} (e);
+                    \draw [edge] (d) to node {$b$} (e);
+                    \draw [edge] (c) to node {$b$} (f);
+                    \draw [edge] (e) to node {$b$} (g);
+                    \draw [edge] (f) to node {$b$} (g);
+                \end{tikzpicture}
+                \caption{Prozessgraph von $t_4$}
+                \label{fig:t4}
+            \end{subfigure}
+            \caption{}
+        \end{figure}
 
     \item
+        \begin{equation}
+            \begin{split}
+                \checkmark \ &\mathcal{B}\  \checkmark \\
+                b \ &\mathcal{B}\  b \\
+                b \ &\mathcal{B}\  (b + b) \\
+                bb \ &\mathcal{B}\  bb \\
+                bb \ &\mathcal{B}\  b(b + b)
+            \end{split}
+        \end{equation}
 
     \item
+        $t_3$ und $t_4$ sind nicht bisimilar.
 
     \item
+        \begin{enumerate}
+            \item
+                \begin{align}
+                        a &\stackrel{a}{\too} \checkmark & &\frac{}{v \stackrel{v}{\too} \checkmark} \\
+                        bb + a &\stackrel{a}{\too} \checkmark & &\frac{y \stackrel{v}{\too} \checkmark}{x + y \stackrel{v}{\too} \checkmark} \\
+                        (bb + a) \cdot b &\stackrel{a}{\too} b & &\frac{x \stackrel{v}{\too} \checkmark}{x \cdot y \stackrel{v}{\too} y}
+                \end{align}
 
+            \item
+                \begin{align}
+                        a &\stackrel{a}{\too} \checkmark & &\frac{}{v \stackrel{v}{\too} \checkmark} \\
+                        a \cdot (b + (b + bb) &\stackrel{a}{\too} b + (b + bb) & &\frac{x \stackrel{v}{\too} \checkmark}{x \cdot y \stackrel{v}{\too} y} \\
+                        a(bb + a)b + a \cdot (b + (b + bb) &\stackrel{a}{\too} b + (b + bb) & &\frac{y \stackrel{v}{\too} y'}{x + y \stackrel{v}{\too} y'}
+                \end{align}
+
+            \item
+                \begin{align}
+                        a &\stackrel{a}{\too} \checkmark & &\frac{}{v \stackrel{v}{\too} \checkmark} \\
+                        a \cdot (bb + a) \cdot b &\stackrel{a}{\too} (bb + a) \cdot b & &\frac{x \stackrel{v}{\too} \checkmark}{x \cdot y \stackrel{v}{\too} y} \\
+                        a \cdot (bb + a) \cdot b + a(b + (b + bb)) &\stackrel{a}{\too} (bb + a) \cdot b & &\frac{x \stackrel{v}{\too} x'}{x + y \stackrel{v}{\too} x'}
+                \end{align}
+
+        \end{enumerate}
+        
     \item
+        \begin{align}
+            t_5 &= b(cf + df) + a(c + d)f \\
+            t_6 &= (a + b)(c + d)f
+        \end{align}
+
+        \begin{figure}[h]
+            \centering
+            \begin{subfigure}{0.45\textwidth}
+                \begin{tikzpicture}[
+                        auto,
+                        scale=2,
+                    ]
+                    \tikzstyle{edge}=[
+                        ->,
+                        >=stealth',
+                    ]
+                    \node (a) at (1,3) {$b(cf + df) + a(c + d)f$};
+                    \node (b) at (0,2) {$cf + df$};
+                    \node (c) at (2,2) {$(c + d)f$};
+                    \node (d) at (1,1) {$f$};
+                    \node (e) at (1,0) {$\checkmark$};
+
+                    \draw [edge] (a) to node {$b$} (b);
+                    \draw [edge] (a) to node {$a$} (c);
+                    \draw [edge, bend right] (b) to node {$c$} (d);
+                    \draw [edge, bend left] (b) to node {$d$} (d);
+                    \draw [edge, bend right] (c) to node {$c$} (d);
+                    \draw [edge, bend left] (c) to node {$d$} (d);
+                    \draw [edge] (d) to node {$f$} (e);
+                \end{tikzpicture}
+                \caption{Prozessgraph von $t_5$}
+                \label{fig:t5}
+            \end{subfigure}
+            \begin{subfigure}{0.45\textwidth}
+                \centering
+                \begin{tikzpicture}[
+                        auto,
+                        scale=2,
+                    ]
+                    \tikzstyle{edge}=[
+                        ->,
+                        >=stealth',
+                    ]
+                    \node (a) at (0,3) {$(a + b)(c + d)f$};
+                    \node (b) at (0,2) {$(c + d)f$};
+                    \node (c) at (0,1) {$f$};
+                    \node (d) at (0,0) {$\checkmark$};
+
+                    \draw [edge] (a) to node {$a$} (b);
+                    \draw [edge, bend right] (b) to node {$c$} (c);
+                    \draw [edge, bend left] (b) to node {$d$} (c);
+                    \draw [edge] (c) to node {$f$} (d);
+                \end{tikzpicture}
+                \caption{Prozessgraph von $t_6$}
+                \label{fig:t6}
+            \end{subfigure}
+            \caption{}
+        \end{figure}
+        \begin{equation}
+            \begin{split}
+                \checkmark \ &\mathcal{B}\  \checkmark \\
+                f \ &\mathcal{B}\  f \\
+                cf + df \ &\mathcal{B}\  (c + d)f \\
+                (c + d)f \ &\mathcal{B}\  (c + d)f \\
+                b(cf + df) + a(c + d)f \ &\mathcal{B}\  (a + b)(c + d)f
+            \end{split}
+        \end{equation}
 
 \end{enumerate}
 
