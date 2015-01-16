@@ -60,8 +60,33 @@
     \item
 
     \item
+        \begin{equation}
+            \begin{split}
+                t_7 &= (d(c + d))(ab + (a + a)(b + b)) \\
+                &\stackrel{R3}{\longrightarrow} (d(c + d))(ab + \underline{a}(b + b)) \\
+                &\stackrel{R3}{\longrightarrow} (d(c + d))(ab + a\underline{b}) \\
+                &\stackrel{R3}{\longrightarrow} (d(c + d))\underline{ab} \\
+                &\stackrel{R5}{\longrightarrow} \underline{d((c + d)ab)} \\
+                &\stackrel{R4}{\longrightarrow} d(\underline{cab + dab})
+            \end{split}
+        \end{equation}
 
     \item
+        \begin{equation}
+            \begin{split}
+                t_8 &= ((d + d)(a + a + c))(a(b + b)) \\
+                &\stackrel{R3}{\longrightarrow} (\underline{d}(a + a + c))(a(b + b)) \\
+                &\stackrel{R3}{\longrightarrow} (d(\underline{a} + c))(a(b + b)) \\
+                &\stackrel{R3}{\longrightarrow} (d(a + c))a\underline{b} \\
+                &\stackrel{R5}{\longrightarrow} \underline{d((a + c)ab)} \\
+                &\stackrel{R4}{\longrightarrow} d(\underline{aab + cab})
+            \end{split}
+        \end{equation}
+
+        $t_7$ und $t_8$ sind nicht äquivalent, da die Normalformen nicht gleich
+        (modulo $=_{AC}$) sind.
+        Es ist auch zu sehen, dass $t_7$ im Gegensatz zu $t_8$ die Aktionsfolge
+        $ddab$ akzeptiert.
 
 \end{enumerate}
 
