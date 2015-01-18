@@ -201,7 +201,8 @@
                     \node (c) at (0,1) {$f$};
                     \node (d) at (0,0) {$\checkmark$};
 
-                    \draw [edge] (a) to node {$a$} (b);
+                    \draw [edge, bend right] (a) to node {$a$} (b);
+                    \draw [edge, bend left] (a) to node {$b$} (b);
                     \draw [edge, bend right] (b) to node {$c$} (c);
                     \draw [edge, bend left] (b) to node {$d$} (c);
                     \draw [edge] (c) to node {$f$} (d);
