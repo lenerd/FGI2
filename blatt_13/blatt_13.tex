@@ -365,15 +365,15 @@
     \item
         \begin{align}
                 a &\stackrel{a}{\too} \checkmark & &\frac{}{v \stackrel{v}{\too} \checkmark} \\
-                (a + b) &\stackrel{a}{\too} \checkmark & &\frac{x \stackrel{v}{\to} \checkmark}{x + y \stackrel{v}{\too} \checkmark} \\
+                (a + b) &\stackrel{a}{\too} \checkmark & &\frac{x \stackrel{v}{\too} \checkmark}{x + y \stackrel{v}{\too} \checkmark} \\
                 (a + b) \llfloor (b \cdot c) &\stackrel{a}{\too} b \cdot c & &T_\llfloor^\checkmark \\
         \end{align}
         \begin{align}
                 d &\stackrel{d}{\too} \checkmark ,\ e \stackrel{e}{\too} \checkmark & &\frac{}{v \stackrel{v}{\too} \checkmark} \\
                 d||e &\stackrel{f}{\too} \checkmark & &T_{||\gamma}^{\checkmark\checkmark} \quad \gamma(d,e) = f \\
-                (d||e) \cdot b &\stackrel{f}{\too} b & &\frac{x \stackrel{v}{\to} \checkmark}{x \cdot y \stackrel{v}{\to} y} \\
-                a \llfloor (b + b) + (d||e) \cdot b &\stackrel{f}{\too} b & &\frac{y \stackrel{v}{\to} y'}{x + y \stackrel{v}{\to} y'} \\
-                \left( a \llfloor (b + b) + (d||e) \cdot b \right) \cdot c &\stackrel{f}{\too} b \cdot c & &\frac{x \stackrel{v}{\to} x'}{x \cdot y \stackrel{v}{\to} x' \cdot y} \\
+                (d||e) \cdot b &\stackrel{f}{\too} b & &\frac{x \stackrel{v}{\too} \checkmark}{x \cdot y \stackrel{v}{\too} y} \\
+                a \llfloor (b + b) + (d||e) \cdot b &\stackrel{f}{\too} b & &\frac{y \stackrel{v}{\too} y'}{x + y \stackrel{v}{\too} y'} \\
+                \left( a \llfloor (b + b) + (d||e) \cdot b \right) \cdot c &\stackrel{f}{\too} b \cdot c & &\frac{x \stackrel{v}{\too} x'}{x \cdot y \stackrel{v}{\too} x' \cdot y} \\
                 \partial_H \Big( \left( a \llfloor (b + b) + (d||e) \cdot b \right) \cdot c \Big) &\stackrel{f}{\too} \partial_H \Big( b \cdot c \Big) & &T_\partial
         \end{align}
 
@@ -486,10 +486,83 @@ Seien im Folgenden $a, b, d$ atomare Aktionen, $H = \{ a, b \}$ und
 
 \begin{enumerate}
     \item
+        $E$ ist eine geschütze rekursize Spezifikation, da sich die rechten
+        Seiten der Gleichungen in die entsprechende Form überführen lassen.
+        \begin{align}
+            \begin{split}
+                X &= (a + b) \cdot Y + c \cdot X \\
+                &= a \cdot Y + b \cdot Y + c \cdot X
+            \end{split} \\
+            \begin{split}
+                Y &= X \cdot d + e \\
+                &\stackrel{!}{=} (a \cdot Y + b \cdot Y + c \cdot X) \cdot d + e \\
+                &= a \cdot (Y \cdot d) + b \cdot (Y \cdot d) + c \cdot (X \cdot d) + e \\
+            \end{split}
+        \end{align}
+
+    \item \hfill \\
+        \begin{figure}[h]
+            \centering
+            \begin{tikzpicture}[
+                    auto,
+                    scale=3,
+                ]
+                \tikzset{
+                    edge/.style={
+                        ->,
+                        >=stealth',
+                    }
+                }
+                \node (x)    at (0,3) {$\langle X|E \rangle$};
+                \node (xd)   at (0,2) {$\langle X|E \rangle \cdot d$};
+                \node (xdd)  at (0,1) {$\langle X|E \rangle \cdot d \cdot d$};
+                \node (xddd) at (0,0) {};
+
+                \node (y)    at (1,3) {$\langle Y|E \rangle$};
+                \node (yd)   at (1,2) {$\langle Y|E \rangle \cdot d$};
+                \node (ydd)  at (1,1) {$\langle Y|E \rangle \cdot d \cdot d$};
+                \node (yddd) at (1,0) {};
+
+                \node (chk)  at (2,3) {$\checkmark$};
+                \node (d)    at (2,2) {$d$};
+                \node (dd)   at (2,1) {$d \cdot d$};
+                \node (ddd)  at (2,0) {};
+
+                \draw [edge, loop left]  (x) to node {$c$} (x);
+                \draw [edge, bend left]  (x) to node {$a$} (y);
+                \draw [edge, bend right] (x) to node {$b$} (y);
+                \draw [edge]             (y) to node {$e$} (chk);
+                \draw [edge]             (y) to node {$c$} (xd);
+                \draw [edge]             (d) to node {$d$} (chk);
+
+                \draw [edge, loop left]  (xd) to node {$c$} (xd);
+                \draw [edge, bend left]  (xd) to node {$a$} (yd);
+                \draw [edge, bend right] (xd) to node {$b$} (yd);
+                \draw [edge]             (yd) to node {$e$} (d);
+                \draw [edge]             (yd) to node {$c$} (xdd);
+                \draw [edge]             (dd) to node {$d$} (d);
+
+                \draw [edge, loop left]  (xdd) to node {$c$} (xdd);
+                \draw [edge, bend left]  (xdd) to node {$a$} (ydd);
+                \draw [edge, bend right] (xdd) to node {$b$} (ydd);
+                \draw [edge]             (ydd) to node {$e$} (dd);
+                \draw [edge, dashed]     (ydd) to node {$c$} (xddd);
+                \draw [edge, dashed]     (ddd) to node {$d$} (dd);
+            \end{tikzpicture}
+            \caption{Prozessgraph zu $\langle X|E \rangle$}
+            \label{fig:recursion}
+        \end{figure}
 
     \item
-
-    \item
+        \begin{align}
+                c &\stackrel{c}{\too} \checkmark & &A_0 \\
+                c \langle X|E \rangle &\stackrel{c}{\too} \langle X|E \rangle & &T_\cdot \\
+                (a + b) \langle Y|E \rangle + c \langle X|E \rangle &\stackrel{c}{\too} \langle X|E \rangle & &T_{+L} \\
+                \langle X|E \rangle &\stackrel{c}{\too} \langle X|E \rangle & &T_{X_i} \\
+                \langle X|E \rangle \cdot d &\stackrel{c}{\too} \langle X|E \rangle \cdot d & &T_\cdot \\
+                (\langle X|E \rangle \cdot d) + e &\stackrel{c}{\too} \langle X|E \rangle \cdot d & &T_{+R} \\
+                \langle Y|E \rangle &\stackrel{c}{\too} \langle X|E \rangle \cdot d & &T_{X_i}
+        \end{align}
 
 \end{enumerate}
 
