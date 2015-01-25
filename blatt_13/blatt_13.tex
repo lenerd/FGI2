@@ -23,6 +23,7 @@
 \usepackage{enumerate}
 \usepackage[section]{placeins}
 \usepackage{tabu}
+\usepackage{rotating}
 \usepackage{subcaption}
 
 % macros
@@ -44,10 +45,271 @@
 
 \section*{Bonusaufgabe 13.3} 
 
+\begin{enumerate}
+    \item Abbildung \ref{fig:reach} auf Seite \pageref{fig:reach}
+        \begin{sidewaysfigure}[h]
+            \centering
+            \begin{tikzpicture}[
+                    auto,
+                ]
+                \tikzset{
+                    edge/.style={
+                        ->,
+                        >=stealth',
+                    }
+                }
+                \node (03)               {$p_1 + p_2 + p_3 + p_4 + p_5$};
+                \node (02) [below=of 03] {$p_1 + p_2 + p_5 + p_7$};
+                \node (01) [below=of 02] {$p_1 + p_2 + p_3 + p_4 + p_8$};
+                \node (00) [below=of 01] {$p_1 + p_2 + p_7 + p_8$};
+
+                \node (13) [right=of 03] {$p_2 + p_3 + p_4 + p_5 + p_6$};
+                \node (12) [below=of 13] {$p_2 + p_5 + p_6 + p_7$};
+                \node (11) [below=of 12] {$p_2 + p_3 + p_4 + p_6 + p_8$};
+                \node (10) [below=of 11] {$p_2 + p_6 + p_7 + p_8$};
+
+                \node (23) [right=of 13] {$p_3 + p_4 + p_5 + p_9$};
+                \node (22) [below=of 23] {$p_5 + p_7 + p_9$};
+                \node (21) [below=of 22] {$p_3 + p_4 + p_8 + p_9$};
+                \node (20) [below=of 21] {$p_7 + p_8 + p_9$};
+
+                \node (32) [right=of 22] {$p_5 + p_{10}$};
+                \node (30) [right=of 20] {$p_8 + p_{10}$};
+
+                \node (42) [right=of 32] {$p_5 + p_{11}$};
+                \node (40) [right=of 30] {$p_8 + p_{11}$};
+
+                \node (50) [right=of 40] {$\emptyset$};
+
+                \draw [edge] (03) to node {$a$} (02);
+                \draw [edge] (01) to node {$a$} (00);
+                \draw [edge] (13) to node {$a$} (12);
+                \draw [edge] (11) to node {$a$} (10);
+                \draw [edge] (23) to node {$a$} (22);
+                \draw [edge] (21) to node {$a$} (20);
+
+                \draw [edge, bend right=60] (03.west) to node [near start] {$h$} (01.west);
+                \draw [edge, bend right=60] (02.west) to node [near start] {$h$} (00.west);
+                \draw [edge, bend right=30] (13.west) to node [near start] {$h$} (11.west);
+                \draw [edge, bend right=40] (12.west) to node [near start] {$h$} (10.west);
+                \draw [edge, bend right=30] (23.west) to node [near start] {$h$} (21.west);
+                \draw [edge, bend right=40] (22.west) to node [near start] {$h$} (20.west);
+                \draw [edge, bend right] (32.west) to node [near start] {$h$} (30.west);
+                \draw [edge, bend right] (42.west) to node [near start] {$h$} (40.west);
+
+                \draw [edge] (03) to node [near start] {$v, w$} (13);
+                \draw [edge] (02) to node [near start] {$v, w$} (12);
+                \draw [edge] (01) to node [near start] {$v, w$} (11);
+                \draw [edge] (00) to node [near start] {$v, w$} (10);
+
+                \draw [edge] (13) to node [near start] {$m$} (23);
+                \draw [edge] (12) to node [near start] {$m$} (22);
+                \draw [edge] (11) to node [near start] {$m$} (21);
+                \draw [edge] (10) to node [near start] {$m$} (20);
+
+                \draw [edge] (22) to node {$k$} (32);
+                \draw [edge] (20) to node {$k$} (30);
+
+                \draw [edge] (32) to node {$f$} (42);
+                \draw [edge] (30) to node {$f$} (40);
+
+                \draw [edge] (40) to node {$b$} (50);
+
+            \end{tikzpicture}
+            \caption{Erreichbarkeitsgraph}
+            \label{fig:reach}
+        \end{sidewaysfigure}
+
+    \item
+        \begin{align}
+            t &= \partial_H \Big( \left( (v + w) \cdot m \cdot t \cdot f \cdot l \right)
+            || \left( a \cdot r \right) || \left( h \cdot s \right) \Big) \\
+            H &= \left\{ l, r, s, t \right\} \\
+            \gamma (x, y) &= \begin{cases}
+                b & \text{if } (x, y) = (l, s) \lor (x, y) = (s, l) \\
+                k & \text{if } (x, y) = (r, t) \lor (x, y) = (t, r) \\
+                \delta & \text{else}
+            \end{cases}
+        \end{align}
+        
+
+    \item
+        \begin{sidewaysfigure}[h]
+            \centering
+            \scalebox{0.8}{
+                \begin{tikzpicture}[
+                        auto,
+                    ]
+                    \tikzset{
+                        edge/.style={
+                            ->,
+                            >=stealth',
+                        }
+                    }
+                    \node (03)               {
+                        $\partial_H \Big( ((v + w) m t f l)
+                        || (a r) || (h s) \Big)$
+                    };
+                    \node (02) [below=of 03] {
+                        $\partial_H \Big( ((v + w) m t f l)
+                        || r ||  (h s)  \Big)$
+                    };
+                    \node (01) [below=of 02] {
+                        $\partial_H \Big( ((v + w) m t f l)
+                        || (a r) || s \Big)$
+                    };
+                    \node (00) [below=of 01] {
+                        $\partial_H \Big( ((v + w) m t f l)
+                        || r || s \Big)$
+                    };
+
+                    \node (13) [right=of 03] {
+                        $\partial_H \Big( (m t f l)
+                        || (a r) || (h s) \Big)$
+                    };
+                    \node (12) [below=of 13] {
+                        $\partial_H \Big( (m t f l)
+                        || r || (h s)  \Big)$
+                    };
+                    \node (11) [below=of 12] {
+                        $\partial_H \Big( (m t f l)
+                        || (a r) || s \Big)$
+                    };
+                    \node (10) [below=of 11] {
+                        $\partial_H \Big( (m t f l)
+                        || r || s \Big)$
+                    };
+
+                    \node (23) [right=of 13] {
+                        $\partial_H \Big( (t f l)
+                        || (a r) || (h s) \Big)$
+                    };
+                    \node (22) [below=of 23] {
+                        $\partial_H \Big( (t f l)
+                        || r || (h s) \Big)$
+                    };
+                    \node (21) [below=of 22] {
+                        $\partial_H \Big( (t f l)
+                        || (a r) || s \Big)$
+                    };
+                    \node (20) [below=of 21] {
+                        $\partial_H \Big( (t f l)
+                        || r || s \Big)$
+                    };
+
+                    \node (32) [right=of 22] {
+                        $\partial_H \Big( (f l)
+                        || (h s) \Big)$
+                    };
+                    \node (30) [right=of 20] {
+                        $\partial_H \Big( ( f l )
+                        || s \Big)$
+                    };
+
+                    \node (42) [right=of 32] {
+                        $\partial_H \Big( l
+                        || (h s) \Big)$
+                    };
+                    \node (40) [right=of 30] {
+                        $\partial_H \Big( l
+                        || s \Big)$
+                    };
+
+                    \node (50) [right=of 40] {$\checkmark$};
+
+                    \draw [edge] (03) to node {$a$} (02);
+                    \draw [edge] (01) to node {$a$} (00);
+                    \draw [edge] (13) to node {$a$} (12);
+                    \draw [edge] (11) to node {$a$} (10);
+                    \draw [edge] (23) to node {$a$} (22);
+                    \draw [edge] (21) to node {$a$} (20);
+
+                    \draw [edge, bend right=60] (03.west) to node [near start] {$h$} (01.west);
+                    \draw [edge, bend right=60] (02.west) to node [near start] {$h$} (00.west);
+                    \draw [edge, bend right=30] (13.west) to node [near start] {$h$} (11.west);
+                    \draw [edge, bend right=40] (12.west) to node [near start] {$h$} (10.west);
+                    \draw [edge, bend right=30] (23.west) to node [near start] {$h$} (21.west);
+                    \draw [edge, bend right=40] (22.west) to node [near start] {$h$} (20.west);
+                    \draw [edge, bend right] (32.west) to node [near start] {$h$} (30.west);
+                    \draw [edge, bend right] (42.west) to node [near start] {$h$} (40.west);
+
+                    \draw [edge] (03) to node [near start] {$v, w$} (13);
+                    \draw [edge] (02) to node [near start] {$v, w$} (12);
+                    \draw [edge] (01) to node [near start] {$v, w$} (11);
+                    \draw [edge] (00) to node [near start] {$v, w$} (10);
+
+                    \draw [edge] (13) to node [near start] {$m$} (23);
+                    \draw [edge] (12) to node [near start] {$m$} (22);
+                    \draw [edge] (11) to node [near start] {$m$} (21);
+                    \draw [edge] (10) to node [near start] {$m$} (20);
+
+                    \draw [edge] (22) to node {$k$} (32);
+                    \draw [edge] (20) to node {$k$} (30);
+
+                    \draw [edge] (32) to node {$f$} (42);
+                    \draw [edge] (30) to node {$f$} (40);
+
+                    \draw [edge] (40) to node {$b$} (50);
+
+                \end{tikzpicture}
+            }
+            \caption{Prozessgraph}
+            \label{fig:process}
+        \end{sidewaysfigure}
+
+         \begin{equation}
+            \begin{split}
+                \checkmark \ &\mathcal{B}\  \emptyset \\
+                %
+                \partial_H \Big( l || s \Big) \ &\mathcal{B}\  p_8 + p_{11} \\
+                \partial_H \Big( l || (hs) \Big) \ &\mathcal{B}\  p_5 + p_{11} \\
+                %
+                \partial_H \Big( (fl) || s \Big) \ &\mathcal{B}\  p_8 + p_{10} \\
+                \partial_H \Big( (fl) || (hs) \Big) \ &\mathcal{B}\  p_5 + p_{10} \\
+                %
+                \partial_H \Big( (tfl) || r || s \Big) \ &\mathcal{B}\  p_7 + p_8 + p_9 \\
+                \partial_H \Big( (tfl) || (ar) || s \Big) \ &\mathcal{B}\  p_3 + p_4 + p_8 + p_9 \\
+                \partial_H \Big( (tfl) || r || (hs) \Big) \ &\mathcal{B}\  p_5 + p_7 + p_9 \\
+                \partial_H \Big( (tfl) || (ar) || (hs) \Big) \ &\mathcal{B}\  p_3 + p_4 + p_5 + p_9 \\
+                %
+                \partial_H \Big( (mtfl) || r || s \Big) \ &\mathcal{B}\  p_2 + p_6 + p_7 + p_8 \\
+                \partial_H \Big( (mtfl) || (ar) || s \Big) \ &\mathcal{B}\  p_2 + p_3 + p_4 + p_6 + p_8 \\
+                \partial_H \Big( (mtfl) || r || (hs) \Big) \ &\mathcal{B}\  p_2 + p_5 + p_6 + p_7 \\
+                \partial_H \Big( (mtfl) || (ar) || (hs) \Big) \ &\mathcal{B}\  p_2 + p_3 + p_4 + p_5 + p_6 \\
+                %
+                \partial_H \Big( ((v + w)mtfl) || r || s \Big) \ &\mathcal{B}\  p_1 + p_2 + p_7 + p_8 \\
+                \partial_H \Big( ((v + w)mtfl) || (ar) || s \Big) \ &\mathcal{B}\  p_1 + p_2 + p_3 + p_4 + p_8 \\
+                \partial_H \Big( ((v + w)mtfl) || r || (hs) \Big) \ &\mathcal{B}\  p_1 + p_2 + p_5 + p_7 \\
+                \partial_H \Big( ((v + w)mtfl) || (ar) || (hs) \Big) \ &\mathcal{B}\  p_1 + p_2 + p_3 + p_4 + p_5
+            \end{split}
+        \end{equation}
+        Der Prozessgraph \ref{fig:process} ist bisimilar zu dem
+        Erreichbarkeitsgraphen \ref{fig:reach}.
+
+\end{enumerate}
+
 \section*{Übungsaufgabe 13.4} 
+
+\begin{enumerate}
+    \item
+
+    \item
+
+    \item
+
+\end{enumerate}
 
 \section*{Bonusaufgabe 13.5} 
 
 \section*{Übungsaufgabe 13.6} 
+
+\begin{enumerate}
+    \item
+
+    \item
+
+    \item
+
+\end{enumerate}
 
 \end{document}
