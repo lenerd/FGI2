@@ -434,6 +434,53 @@
 \end{enumerate}
 
 \section*{Bonusaufgabe 13.5} 
+Angenommen die Distributivaxiome würden gelten.
+Dann müsste bei Verwendung dieser die gleiche Normalform entstehen, wie ohne
+deren Verwendung.
+Die Verwendung der Distributivaxiome ist mit $(\star)$ gekennzeichnet.
+Seien im Folgenden $a, b, d$ atomare Aktionen, $H = \{ a, b \}$ und
+\begin{equation}
+    \gamma(x,y) =
+    \begin{cases}
+        c & \text{if } (x,y) = (a,b) \lor (x,y) = (b,a) \\
+        \delta & \text{else}
+    \end{cases}
+    \text{ .}
+\end{equation}
+\begin{enumerate}
+    \item Parallelitätsoperator
+        \begin{align}
+            \begin{split}
+                \partial_H (a||b) &\stackrel{M1}{=} \partial_H ((a \llfloor b + b \llfloor a) + a|b) \\
+                &\stackrel{LM2,CM5}{=} \partial_H ((a \cdot b + b \cdot a) + c) \\
+                &\stackrel{D\{4,5,1,2\}}{=} ((\delta \cdot \delta + \delta \cdot \delta) + c) \\
+                &\stackrel{A6,A7}{=} c
+                \label{eq:||}
+            \end{split} \\
+            \begin{split}
+                \partial_H (a||b) &\stackrel{(\star)}{=} \partial_H (a) || \partial_H (b) \\
+                &\stackrel{D2}{=} \delta || \delta \\
+                &\stackrel{CM12}{=} \delta \neq c \quad \lightning
+            \end{split}
+        \end{align}
+
+    \item Leftmerge-Operator
+        \begin{align}
+            \begin{split}
+                \partial_H ((da) \llfloor b ) &\stackrel{LM3}{=} \partial_H (d \cdot (a||b)) \\
+                &\stackrel{D5}{=} \partial_H (d) \cdot \partial_H (a||b) \\
+                &\stackrel{D1}{=} d \cdot \partial_H (a||b) \\
+                &\stackrel{\eqref{eq:||}}{=} d \cdot c
+            \end{split} \\
+            \begin{split}
+                \partial_H ((da) \llfloor b ) &\stackrel{(\star)}{=} \partial_H (da) \llfloor \partial_H (b) \\
+                &\stackrel{D\{5,1,2\}}{=} (d\delta) \llfloor \delta \\
+                &\stackrel{LM3}{=} d \cdot (\delta || \delta) \\
+                &\stackrel{CM12}{=} d \cdot \delta \neq d \cdot c \quad \lightning
+            \end{split}
+        \end{align}
+
+\end{enumerate}
 
 \section*{Übungsaufgabe 13.6} 
 
