@@ -364,16 +364,16 @@
 
     \item
         \begin{align}
-                a &\stackrel{a}{\too} \checkmark & &\frac{}{v \stackrel{v}{\too} \checkmark} \\
-                (a + b) &\stackrel{a}{\too} \checkmark & &\frac{x \stackrel{v}{\too} \checkmark}{x + y \stackrel{v}{\too} \checkmark} \\
+                a &\stackrel{a}{\too} \checkmark & &A_0 \\
+                (a + b) &\stackrel{a}{\too} \checkmark & &T_{+R}^\checkmark \\
                 (a + b) \llfloor (b \cdot c) &\stackrel{a}{\too} b \cdot c & &T_\llfloor^\checkmark \\
         \end{align}
         \begin{align}
-                d &\stackrel{d}{\too} \checkmark ,\ e \stackrel{e}{\too} \checkmark & &\frac{}{v \stackrel{v}{\too} \checkmark} \\
+                d &\stackrel{d}{\too} \checkmark ,\ e \stackrel{e}{\too} \checkmark & &A_0 \\
                 d||e &\stackrel{f}{\too} \checkmark & &T_{||\gamma}^{\checkmark\checkmark} \quad \gamma(d,e) = f \\
-                (d||e) \cdot b &\stackrel{f}{\too} b & &\frac{x \stackrel{v}{\too} \checkmark}{x \cdot y \stackrel{v}{\too} y} \\
-                a \llfloor (b + b) + (d||e) \cdot b &\stackrel{f}{\too} b & &\frac{y \stackrel{v}{\too} y'}{x + y \stackrel{v}{\too} y'} \\
-                \left( a \llfloor (b + b) + (d||e) \cdot b \right) \cdot c &\stackrel{f}{\too} b \cdot c & &\frac{x \stackrel{v}{\too} x'}{x \cdot y \stackrel{v}{\too} x' \cdot y} \\
+                (d||e) \cdot b &\stackrel{f}{\too} b & &T_\cdot^\checkmark \\
+                a \llfloor (b + b) + (d||e) \cdot b &\stackrel{f}{\too} b & &T_{+L} \\
+                \left( a \llfloor (b + b) + (d||e) \cdot b \right) \cdot c &\stackrel{f}{\too} b \cdot c & &T_\cdot \\
                 \partial_H \Big( \left( a \llfloor (b + b) + (d||e) \cdot b \right) \cdot c \Big) &\stackrel{f}{\too} \partial_H \Big( b \cdot c \Big) & &T_\partial
         \end{align}
 
